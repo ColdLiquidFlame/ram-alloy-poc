@@ -14,7 +14,9 @@ const QRCodeGenerator = () => {
       <QRCode
         size={256}
         style={{ height: "auto", maxWidth: "25%", width: "25%" }}
-        value={"https://192.168.86.60:3000/order/" + value}
+        value={
+          "https://zealous-plant-09bf75710.2.azurestaticapps.net/order/" + value
+        }
         viewBox={`0 0 256 256`}
       />
     </div>
