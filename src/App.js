@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import AuthenticatedUser from "./AuthenticatedUser";
+import { MsalProvider } from "@azure/msal-react";
+import { PublicClientApplication } from "@azure/msal-browser";
+import config from "./msalConfig";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import QRCodeGenerator from "./QRCodeGenerator";
+import Dashboard from "./Dashboard";
+import Orders from "./Orders";
+import Redirect from "./Redirect";
 
-function App() {
+const App = () => {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Dashboard />,
+    },
+    {
+      path: "/qr",
+      element: <QRCodeGenerator />,
+    },
+    {
+      path: "/order/:orderId",
+      element: <Orders />,
+    },
+    {
+      path: "/redirect",
+      element: <Redirect />,
+    },
+  ]);
+  const pca = new PublicClientApplication(config);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MsalProvider instance={pca}>
+      <AuthenticatedUser />
+      <RouterProvider router={router} />
+    </MsalProvider>
   );
-}
+};
 
 export default App;
