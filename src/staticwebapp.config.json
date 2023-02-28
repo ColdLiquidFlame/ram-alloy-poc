@@ -1,0 +1,21 @@
+{
+  "trailingSlash": "auto",
+  "routes": [
+    {
+      "route": "/",
+      "rewrite": "/"
+    },
+    {
+      "route": "/qr",
+      "rewrite": "/qr"
+    },
+    {
+      "route": "/redirect",
+      "rewrite": "/redirect"
+    },
+    {
+      "route": "/order*",
+      "rewrite": "/order*"
+    }
+  ]
+}
