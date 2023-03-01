@@ -7,15 +7,7 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
-import {
-  BrowserRouter,
-  RouterProvider,
-  createBrowserRouter,
-} from "react-router-dom";
-import QRCodeGenerator from "./QRCodeGenerator";
-import Dashboard from "./Dashboard";
-import Orders from "./Orders";
-import Redirect from "./Redirect";
+import { BrowserRouter } from "react-router-dom";
 
 const App = () => {
   console.log(config);

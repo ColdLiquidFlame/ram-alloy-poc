@@ -1,17 +1,7 @@
-import {
-  AppBar,
-  Container,
-  Menu,
-  Toolbar,
-  Box,
-  MenuItem,
-  IconButton,
-  Typography,
-  Button,
-} from "@mui/material";
+import { AppBar, Toolbar, Box, IconButton, Button } from "@mui/material";
 
 import MenuIcon from "@mui/icons-material/Menu";
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import AuthenticatedUser from "../AuthenticatedUser";
 
 const Navbar = () => {
@@ -33,14 +23,14 @@ const Navbar = () => {
           <Button
             sx={{ my: 2, color: "white", display: "block" }}
             onClick={() => navigate("/")}
-            variant={location.pathname == "/" ? "contained" : "text "}
+            variant={location.pathname === "/" ? "contained" : "text "}
           >
             Dashboard
           </Button>
           <Button
             sx={{ my: 2, color: "white", display: "block" }}
             onClick={() => navigate("/qr")}
-            variant={location.pathname == "/qr" ? "contained" : "text "}
+            variant={location.pathname === "/qr" ? "contained" : "text "}
           >
             Generate QR Code
           </Button>
