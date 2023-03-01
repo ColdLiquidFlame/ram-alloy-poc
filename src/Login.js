@@ -12,7 +12,12 @@ const Login = () => {
 
   return (
     <>
-      <Button onClick={onClick}>Login</Button>
+      <Button
+        onClick={onClick}
+        sx={{ my: 2, color: "white", display: "block" }}
+      >
+        Login
+      </Button>
     </>
   );
 };
