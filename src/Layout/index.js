@@ -13,8 +13,6 @@ const Layout = () => {
     <div className="top">
       <img alt="" src={logo}/>
         <div className="content">
-        
-
           <Paper>
             <Navbar />
           </Paper>
@@ -23,12 +21,11 @@ const Layout = () => {
             <Route path="/qr" element={<QRCodeGenerator />} />
             <Route path="/order/:orderId" element={<Orders />} />
           </Routes>
-          <div className="footer"> 
+          {/* <div className="footer"> 
           <footer></footer>
-        </div>
+        </div> */}
+        </div>  
     </div>
-    
-    // </div>
   );
 };
 

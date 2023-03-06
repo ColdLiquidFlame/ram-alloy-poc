@@ -1,7 +1,6 @@
-import { AppBar, Toolbar, Box, IconButton, Button } from "@mui/material";
 import '../main.css'
 
-import MenuIcon from "@mui/icons-material/Menu";
+// import MenuIcon from "@mui/icons-material/Menu";
 import { useLocation, useNavigate } from "react-router-dom";
 import AuthenticatedUser from "../AuthenticatedUser";
 
@@ -12,29 +11,24 @@ const Navbar = () => {
   console.log("location: {location}", location);
   return (
     <div className="navbar">
-    {/* <div className="form-group"> */}
       <div className="Button">
         <button onClick={() => navigate("/")}
-            variant={location.pathname === "/" ? "contained" : "text "}>Dashboard</button>
+            variant={location.pathname === "/" ? "contained" : "text "}>Dashboard
+        </button>
       </div>
       <div className="Button">
-      <button onClick={() => navigate("/qr")}
-            variant={location.pathname === "/qr" ? "contained" : "text "}>Generate Cover Sheet</button>
+        <button onClick={() => navigate("/qr")}
+            variant={location.pathname === "/qr" ? "contained" : "text "}>Generate Cover Sheet
+        </button>
       </div>
       <AuthenticatedUser/>
     </div>
-    // </div>
-
-
-
   );
 };
 
-
-
 export default Navbar;
 
-{/* <AppBar position={"static"}>
+/* <AppBar position={"static"}>
       <Toolbar p={"100px"}>
         <Box sx={{ flexGrow: 1, display: { s: "flex", md: "none" } }}>
           <IconButton>
@@ -68,4 +62,4 @@ export default Navbar;
           <AuthenticatedUser />
         </Box>
       </Toolbar>
-    </AppBar> */}
+    </AppBar> */
