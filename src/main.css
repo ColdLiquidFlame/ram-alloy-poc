@@ -3,9 +3,12 @@ header{
  
 }
 .top {
-    background: #e9e9e9;
+    /* background-color: #e9e9e9; */
+    background-color: #e9e9e9;
+
     border-top: 14px solid #1d2125;
     height: 55px;
+    
 }
 *{
     -webkit-box-sizing: border-box;
@@ -15,31 +18,19 @@ header{
 body {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 14px;
-    line-height: 1.42857143;
+    /* line-height: 1.42857143; */
     color: #333;
     background-color: #fff;
+    height: 55px;
 }
 
-.restraint {
-    width: 1180px;
-    margin: 0 auto;
-    position: relative;
-}
-.middle {
-    height: 95px;
-
-        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-        font-size: 14px;
-        line-height: 1.42857143;
-        color: #333;
-        background-color: #fff;
-}
 img {
     vertical-align: middle;
     position:relative;
     margin-left: 250px;
     overflow-clip-margin: content-box;
     overflow: clip;
+    padding-bottom: 30px;
     /* object-position: 40px 60px; */
 }
 input{
@@ -72,7 +63,6 @@ fieldset {
     text-align: center;
 
 }
-
 .QR Code Button button{
     color: #fff;
     text-transform: uppercase;
@@ -108,9 +98,7 @@ fieldset {
     text-align: center;
     float:right;
 }
-/* .container{
-    background-color: grey;
-} */
+
 .primary-nav {
     width: 1180px;
     margin: 0 auto;
@@ -123,7 +111,7 @@ fieldset {
     align-items: center;
     align-content: center;
     margin: auto;
-    padding-bottom: 20%;
+    padding-bottom: 60%;
     background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
 
 }
@@ -156,4 +144,14 @@ fieldset {
 .ag-theme-alpine{
     height: 600px;
     width: 100%; 
+    align-content: center;
+    
 }
+footer {
+    text-align: center;
+    padding: 3px;
+    background: #48484a;
+    color: #333;
+    padding-bottom: 400px;
+  }
+  
