@@ -24,7 +24,7 @@ const AuthenticatedUser = () => {
         <Typography variant="div" m="auto 0" textAlign="center">
           {account?.name}
         </Typography>
-        <div className="button">
+        <div className="signout button">
           <button onClick={signOut}>sign Out</button>
         </div>
         {/* <Button

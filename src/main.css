@@ -63,6 +63,19 @@ img {
     margin-bottom: 5px;
     margin-top: 5px;
 }
+.signout button{
+    color: #fff;
+    text-transform: uppercase;
+    width: 100px;
+    height: 30px;
+    display: inline;
+    background: #555758;
+    background: linear-gradient(to bottom, #555758 0%,#3d3e3f 100%);
+    text-align: center;
+    float:right;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
 .primary-nav {
     width: 1180px;
     margin: 0 auto;
