@@ -1,5 +1,5 @@
 import '../main.css'
-
+import React from 'react';
 // import MenuIcon from "@mui/icons-material/Menu";
 import { useLocation, useNavigate } from "react-router-dom";
 import AuthenticatedUser from "../AuthenticatedUser";
