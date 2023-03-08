@@ -10,7 +10,6 @@ import "@fontsource/roboto/700.css";
 import { BrowserRouter } from "react-router-dom";
 
 const App = () => {
-  console.log(config);
   const pca = new PublicClientApplication(config);
   return (
     <MsalProvider instance={pca}>
