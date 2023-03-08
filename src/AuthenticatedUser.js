@@ -24,12 +24,15 @@ const AuthenticatedUser = () => {
         <Typography variant="div" m="auto 0" textAlign="center">
           {account?.name}
         </Typography>
-        <Button
+        <div className="signout button">
+          <button onClick={signOut}>sign Out</button>
+        </div>
+        {/* <Button
           onClick={signOut}
           sx={{ my: 2, color: "white", display: "block" }}
         >
           Sign Out
-        </Button>
+        </Button> */}
       </AuthenticatedTemplate>
     </>
   );
