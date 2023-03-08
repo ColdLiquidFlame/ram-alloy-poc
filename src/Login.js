@@ -1,4 +1,5 @@
 // import Button from "@mui/material/Button";
+import React from 'react';
 import config from "./msalConfig";
 import { useMsalAuthentication } from "@azure/msal-react";
 import { InteractionType } from "@azure/msal-browser";

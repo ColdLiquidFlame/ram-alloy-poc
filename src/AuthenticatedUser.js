@@ -1,15 +1,19 @@
+import React from 'react';
 import {
   useMsal,
   AuthenticatedTemplate,
   UnauthenticatedTemplate,
 } from "@azure/msal-react";
-import Button from "@mui/material/Button";
-import Login from "./Login";
 import { Typography } from "@mui/material";
+
+import Login from "./Login";
+
 const AuthenticatedUser = () => {
   const { accounts, instance } = useMsal();
 
   var [account] = accounts;
+
+  console.log(account);
 
   const signOut = async () => {
     await instance.logout();
@@ -22,17 +26,11 @@ const AuthenticatedUser = () => {
       </UnauthenticatedTemplate>
       <AuthenticatedTemplate>
         <Typography variant="div" m="auto 0" textAlign="center">
-          {account?.name}
+          {account != null ? account.name : ""}
         </Typography>
         <div className="signout button">
-          <button onClick={signOut}>sign Out</button>
+          <button onClick={signOut}>Sign Out</button>
         </div>
-        {/* <Button
-          onClick={signOut}
-          sx={{ my: 2, color: "white", display: "block" }}
-        >
-          Sign Out
-        </Button> */}
       </AuthenticatedTemplate>
     </>
   );
