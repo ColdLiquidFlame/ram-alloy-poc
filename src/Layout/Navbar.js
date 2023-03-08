@@ -1,6 +1,12 @@
 import '../main.css'
+import useStyles from '../Styles';
 
-// import MenuIcon from "@mui/icons-material/Menu";
+// import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+
 import { useLocation, useNavigate } from "react-router-dom";
 import AuthenticatedUser from "../AuthenticatedUser";
 
@@ -9,57 +15,36 @@ const Navbar = () => {
   var location = useLocation();
 
   console.log("location: {location}", location);
+  const classes = useStyles();
+
   return (
-    <div className="navbar">
-      <div className="Button">
-        <button onClick={() => navigate("/")}
-            variant={location.pathname === "/" ? "contained" : "text "}>Dashboard
-        </button>
-      </div>
-      <div className="Button">
-        <button onClick={() => navigate("/qr")}
-            variant={location.pathname === "/qr" ? "contained" : "text "}>Generate Cover Sheet
-        </button>
-      </div>
-      <AuthenticatedUser/>
-    </div>
-  );
-};
-
-export default Navbar;
-
-/* <AppBar position={"static"}>
-      <Toolbar p={"100px"}>
-        <Box sx={{ flexGrow: 1, display: { s: "flex", md: "none" } }}>
-          <IconButton>
-            <MenuIcon />
+    // <AppBar className={classes.appbar}>
+      <Toolbar className={classes.toolbar}>
+        <Box className={classes.box}>
+          <IconButton className={classes.iconbutton}>
           </IconButton>
         </Box>
-        <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-          <Button
-            sx={{ my: 2, color: "white", display: "block" }}
-            onClick={() => navigate("/")}
+        <Box className={classes.box}>
+          <Button className={classes.buttons} onClick={() => navigate("/")}
             variant={location.pathname === "/" ? "contained" : "text "}
           >
             Dashboard
           </Button>
-          <Button
-            sx={{ my: 2, color: "white", display: "block" }}
-            onClick={() => navigate("/qr")}
+          <Button className={classes.buttons} onClick={() => navigate("/qr")}
             variant={location.pathname === "/qr" ? "contained" : "text "}
           >
             Generate QR Code
           </Button>
         </Box>
-        <Box
-          sx={{
-            flexGrow: 0,
-            flexDirection: "column",
-
-            justifyContent: "flex-end",
-          }}
-        >
+        <Box className={classes.box}>
           <AuthenticatedUser />
         </Box>
       </Toolbar>
-    </AppBar> */
+    // </AppBar> 
+
+  );
+};
+
+export default Navbar;
+
+

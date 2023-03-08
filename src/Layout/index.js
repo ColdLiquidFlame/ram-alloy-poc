@@ -21,9 +21,6 @@ const Layout = () => {
             <Route path="/qr" element={<QRCodeGenerator />} />
             <Route path="/order/:orderId" element={<Orders />} />
           </Routes>
-          {/* <div className="footer"> 
-          <footer></footer>
-        </div> */}
         </div>  
     </div>
   );

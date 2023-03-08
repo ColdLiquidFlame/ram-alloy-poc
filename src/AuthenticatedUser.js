@@ -3,7 +3,7 @@ import {
   AuthenticatedTemplate,
   UnauthenticatedTemplate,
 } from "@azure/msal-react";
-import Button from "@mui/material/Button";
+// import Button from "@mui/material/Button";
 import Login from "./Login";
 import { Typography } from "@mui/material";
 const AuthenticatedUser = () => {
