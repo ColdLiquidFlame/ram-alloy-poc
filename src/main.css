@@ -1,0 +1,149 @@
+header{
+    text-align: center;
+}
+.top {
+    background-color: #e9e9e9;
+    border-top: 14px solid #1d2125;
+    height: 55px;
+}
+*{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    color: #333;
+    background-color: #fff;
+    height: 55px;
+}
+img {
+    vertical-align: middle;
+    position:relative;
+    margin-left: 250px;
+    overflow-clip-margin: content-box;
+    overflow: clip;
+    padding-bottom: 30px;
+}
+.QR Code Button button{
+    color: #fff;
+    text-transform: uppercase;
+    width: 100px;
+    height: 50px;
+    background: linear-gradient(to bottom, #555758 0%,#3d3e3f 100%);
+    text-align: center;
+    float: right;
+}
+.Button button{
+    color: #fff;
+    text-transform: uppercase;
+    width: 200px;
+    height: 50px;
+    display: inline-flexbox;
+    background: #555758;
+    background: linear-gradient(to bottom, #555758 0%,#3d3e3f 100%);
+    text-align: center;
+    position:static;
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+.login button{
+    color: #fff;
+    text-transform: uppercase;
+    width: 100px;
+    height: 50px;
+    display: inline;
+    background: #555758;
+    background: linear-gradient(to bottom, #555758 0%,#3d3e3f 100%);
+    text-align: center;
+    float:right;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+.signout button{
+    color: #fff;
+    text-transform: uppercase;
+    width: 100px;
+    height: 30px;
+    display: inline;
+    background: #555758;
+    background: linear-gradient(to bottom, #555758 0%,#3d3e3f 100%);
+    text-align: center;
+    float:right;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+.primary-nav {
+    width: 1180px;
+    margin: 0 auto;
+    padding-left: 0;
+    z-index: 100;
+}
+.content{
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    align-content: center;
+    margin: auto;
+    padding-bottom: 60%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
+}
+.qrcodecontent{
+    background-color: white;
+    background-position: center;
+    background-size: 50%;
+}
+.navbar {
+    overflow: hidden;
+    background-color: lightgray;
+    font-family: Arial;
+  }
+.text{
+    text-align: center;
+    float: center;
+    padding-top: 5%;
+}
+.text label{
+    text-align: center;
+}
+.qr{
+    width: 100%;
+    height: 100%;
+    margin-bottom: 10px;
+}
+.ag-theme-alpine{
+    height: 600px;
+    padding-left: 50px;
+    width: 100%; 
+    align-items: 'center';
+    align-content: 'center';
+    justify-content: 'center';
+    display: 'grid';
+    padding-bottom: 50px;
+    padding-right: 50px;   
+}
+/* footer {
+    text-align: center;
+    padding: 3px;
+    background: #48484a;
+    color: #333;
+    padding-bottom: 150px;
+    padding-top: 150px;
+} */
+.QRButton button{
+    color: #fff;
+    text-transform: uppercase;
+    width: 200px;
+    height: 50px;
+    display: inline-flexbox;
+    background: #555758;
+    background: linear-gradient(to bottom, #555758 0%,#3d3e3f 100%);
+    text-align: center;
+    position:static;
+    float: center;
+    margin-bottom: 50px;
+    
+}
