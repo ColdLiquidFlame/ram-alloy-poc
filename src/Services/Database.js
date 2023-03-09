@@ -18,9 +18,26 @@ const DatabaseService = {
         const { resources: orders } = await client
             .database(CosmosDbConfig.DatabaseId)
             .container(CosmosDbConfig.Container)
-            .items.query(querySpec)
+            .items
+            .query(querySpec)
             .fetchAll()
         return orders;
+    },
+    getOrderById: async (id) => {
+       var order = await client
+            .database(CosmosDbConfig.DatabaseId)
+            .container(CosmosDbConfig.Container)
+            .item(id)
+            .read()
+
+        return order;
+    },
+    insertOrderLog: async (orderLog) => {
+        await client
+        .database(CosmosDbConfig.DatabaseId)
+        .container(CosmosDbConfig.Container)
+        .items
+        .create(orderLog);
     }
 };
 
