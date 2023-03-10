@@ -11,16 +11,22 @@ const Navbar = () => {
   console.log("location: {location}", location);
   return (
     <div className="navbar">
+      <ul>
       <div className="Button">
+        <li>
         <button onClick={() => navigate("/")}
             variant={location.pathname === "/" ? "contained" : "text "}>Dashboard
         </button>
+        </li>
       </div>
       <div className="Button">
+      <li>
         <button onClick={() => navigate("/qr")}
             variant={location.pathname === "/qr" ? "contained" : "text "}>Generate Cover Sheet
         </button>
+      </li>
       </div>
+      </ul>
       <AuthenticatedUser/>
     </div>
   );

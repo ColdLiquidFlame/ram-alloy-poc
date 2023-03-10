@@ -6,9 +6,9 @@ import QRCode from "react-qr-code";
     const [value, setValue] = useState('');
     
     return (
-      <div className="content">
+      // <div className="content">
         <div className="qrcodecontent">
-          <div className="text">
+          <div className="qrtext">
             <TextField style={{backgroundColor: "lightgrey",marginBottom: 20,}}
                id="standard-basic"
                label="Order Id"
@@ -21,6 +21,8 @@ import QRCode from "react-qr-code";
               />
           <div className="qr">
             <QRCode value={"https://zealous-plant-09bf75710.2.azurestaticapps.net/order/" + value}/>
+            {/* <QRCode value={"https://localhost:3000/order/" + value}/> */}
+
           </div>
             {value && <> <a href={value} download={"work#.pdf"}>
               <div className="QRButton">
@@ -30,7 +32,7 @@ import QRCode from "react-qr-code";
             </>}
           </div>
         </div>
-      </div>
+      // </div>
     );
   }
 
