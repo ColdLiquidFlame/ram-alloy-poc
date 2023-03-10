@@ -3,7 +3,6 @@ import { Route, Routes } from "react-router-dom";
 import '../main.css'
 import logo from './Logo.png';
 import React from 'react';
-// import ReactDOM from 'react-dom';
 import Navbar from "./Navbar";
 import Dashboard from "../Dashboard";
 import QRCodeGenerator from "../QRCodeGenerator";
@@ -21,9 +20,6 @@ const Layout = () => {
             <Route path="/qr" element={<QRCodeGenerator />} />
             <Route path="/order/:orderId" element={<Orders />} />
           </Routes>
-          {/* <div className="footer"> 
-          <footer></footer>
-        </div> */}
         </div>  
     </div>
   );
