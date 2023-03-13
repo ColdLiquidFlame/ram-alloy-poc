@@ -7,9 +7,11 @@ const options = {
     userAgentSuffix: 'OrderTracking'
   };
 
+const containerId = "Orders";
+
 const client = new CosmosClient(options);
 
-const DatabaseService = {
+const OrderTrackingService = {
     getOrders: async () => {        
         const querySpec = {
             query: 'SELECT * FROM Orders',
@@ -17,7 +19,7 @@ const DatabaseService = {
 
         const { resources: orders } = await client
             .database(CosmosDbConfig.DatabaseId)
-            .container(CosmosDbConfig.Container)
+            .container(containerId)
             .items
             .query(querySpec)
             .fetchAll()
@@ -26,7 +28,7 @@ const DatabaseService = {
     getOrderById: async (id) => {
        var order = await client
             .database(CosmosDbConfig.DatabaseId)
-            .container(CosmosDbConfig.Container)
+            .container(containerId)
             .item(id)
             .read()
 
@@ -35,10 +37,10 @@ const DatabaseService = {
     insertOrderLog: async (orderLog) => {
         await client
         .database(CosmosDbConfig.DatabaseId)
-        .container(CosmosDbConfig.Container)
+        .container(containerId)
         .items
         .create(orderLog);
     }
 };
 
-export default DatabaseService;
+export default OrderTrackingService;

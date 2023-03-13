@@ -1,39 +1,13 @@
 import React from 'react';
-import {
-  useMsal,
-  AuthenticatedTemplate,
-  UnauthenticatedTemplate,
-} from "@azure/msal-react";
-import { Typography } from "@mui/material";
+import { useAuth0 } from '@auth0/auth0-react';
 
 import Login from "./Login";
+import Logout from './Logout';
 
 const AuthenticatedUser = () => {
-  const { accounts, instance } = useMsal();
+  var { isAuthenticated } = useAuth0();
 
-  var [account] = accounts;
-
-  console.log(account);
-
-  const signOut = async () => {
-    await instance.logout();
-  };
-
-  return (
-    <>
-      <UnauthenticatedTemplate>
-        <Login />
-      </UnauthenticatedTemplate>
-      <AuthenticatedTemplate>
-        <Typography variant="div" m="auto 0" textAlign="center">
-          {account != null ? account.name : ""}
-        </Typography>
-        <div className="signout button">
-          <button onClick={signOut}>Sign Out</button>
-        </div>
-      </AuthenticatedTemplate>
-    </>
-  );
+  return isAuthenticated ? <Logout /> : <Login/>;
 };
 
 export default AuthenticatedUser;

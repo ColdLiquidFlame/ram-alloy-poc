@@ -8,7 +8,6 @@ const Navbar = () => {
   const navigate = useNavigate();
   var location = useLocation();
 
-  console.log("location: {location}", location);
   return (
     <div className="navbar">
       <div className="Button">
