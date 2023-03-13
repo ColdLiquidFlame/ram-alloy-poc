@@ -1,9 +1,9 @@
-// import Button from "@mui/material/Button";
+import Button from "@mui/material/Button";
 import React from 'react';
 import config from "./msalConfig";
 import { useMsalAuthentication } from "@azure/msal-react";
 import { InteractionType } from "@azure/msal-browser";
-
+// import {theme} from './theme';
 const Login = () => {
   const { login } = useMsalAuthentication(InteractionType.Silent, config);
 
@@ -13,15 +13,12 @@ const Login = () => {
 
   return (
     <>
-    <div className="login button">
-        <button onClick={onClick}>Login</button>
-      </div>
-      {/* <Button
+      <Button
         onClick={onClick}
-        sx={{ my: 2, color: "white", display: "block" }}
+        sx={{ color: "white", width: '200px', height: '50px',display: 'inline-flexbox',  background: "rgb(151, 150, 150)",  fontSize: '16px', float:'left',}}
       >
         Login
-      </Button> */}
+      </Button> 
     </>
   );
 };

@@ -4,7 +4,7 @@ import {
   AuthenticatedTemplate,
   UnauthenticatedTemplate,
 } from "@azure/msal-react";
-// import { Typography } from "@mui/material";
+import { Typography, Button } from "@mui/material";
 
 import Login from "./Login";
 
@@ -25,15 +25,10 @@ const AuthenticatedUser = () => {
         <Login />
       </UnauthenticatedTemplate>
       <AuthenticatedTemplate>
-        <div className='SignOutText'>
-          <text>{account != null ? account.name : ""}</text>
-        </div>
-        {/* <Typography variant="div" m="auto 0" textAlign="center">
+        <Typography variant="div" m="auto 0" textAlign="center">
           {account != null ? account.name : ""}
-        </Typography> */}
-        <div className="signout button">
-          <button onClick={signOut}>Sign Out</button>
-        </div>
+        </Typography>
+          <Button onClick={signOut}>Sign Out</Button> 
       </AuthenticatedTemplate>
     </>
   );

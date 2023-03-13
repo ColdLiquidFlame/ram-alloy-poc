@@ -10,20 +10,21 @@ import QRCodeGenerator from "../QRCodeGenerator";
 import Orders from "../Orders";
 const Layout = () => {
   return (
-    <div className="top">
-      <img alt="" src={logo}/>
-        <div className="content">
-          <Paper>
-            <Navbar />
-          </Paper>
-          <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/qr" element={<QRCodeGenerator />} />
-            <Route path="/order/:orderId" element={<Orders />} />
-          </Routes>
-          {/* <div className="footer"> 
-          <footer></footer>
-        </div> */}
+    <div class="flexbox-container">
+        <div class="flexbox-item top">
+          <div class="flexbox-item secondtop">
+            <div className="flexbox-item content">
+              <img alt="" src={logo}/>
+                <Paper>
+                  <Navbar />
+                </Paper>
+                <Routes>
+                  <Route path="/" element={<Dashboard />} />
+                  <Route path="/qr" element={<QRCodeGenerator />} />
+                  <Route path="/order/:orderId" element={<Orders />} />
+                </Routes>
+            </div>
+          </div>
         </div>  
     </div>
   );
