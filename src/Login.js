@@ -6,7 +6,7 @@ import { InteractionType } from "@azure/msal-browser";
 import { makeStyles, createStyles} from "@mui/styles";
 // import {theme} from './theme';
 const useStyles = makeStyles((theme) => createStyles({
-  Button: { color: 'white', width: '200px', height: '50px',display: 'inline-flexbox',  background: 'lightGreen',  fontSize: '16px', border: '2px solid' },
+  Button: { color: 'primary', width: '200px', height: '50px',  fontSize: '16px', border: '2px solid' },
 }));
 const Login = () => {
   const { login } = useMsalAuthentication(InteractionType.Silent, config);

@@ -1,6 +1,8 @@
 // import '../main.css'
 import React from 'react';
-import {Box, Button, AppBar, Toolbar} from "@mui/material/"
+// import {Box, Button, AppBar, Toolbar} from "@mui/material/"
+import {Box, Button, Toolbar} from "@mui/material/"
+
 import { makeStyles, createStyles} from "@mui/styles";
 import { useLocation, useNavigate } from "react-router-dom";
 import AuthenticatedUser from "../AuthenticatedUser";
@@ -18,7 +20,9 @@ const styles = {
   },
   nav:{
     fontFamily: 'Arial',
-    backgroundColor: 'red',
+    backgroundColor:'#888888',
+    // backgroundColor:'yellow',
+
     overflow:'hidden',
     marginBottom: '25px',
     paddingTop: '4px',
@@ -33,9 +37,9 @@ const navButtons = [
 ];
 
 const useStyles = makeStyles((theme) => createStyles({
-  Button: { color: 'white', width: '200px', height: '50px',display: 'inline-flexbox',  background: 'lightGreen',  fontSize: '16px', border: '2px solid' },
+  Button: { color: 'primary', width: '200px', height: '50px',  fontSize: '16px', border: 'none' },
   Box: { flexGrow: 1, display: { xs: "none", md: "flex" } },
-  Navbar: {position:"static"},
+  AppBar: {position:"static"},
   Toolbar: {p:"100px"}
 }));
 
@@ -48,8 +52,9 @@ const Navbar = () => {
 
   return (
     <div class="flexboxContainer" style={styles.flexboxContainer}>
-      <div class="flexboxItem navbar" style={styles.nav}>
-    <AppBar className={classes.Navbar}>
+      <div class='flexboxItem' style={styles.flexboxItem}>
+        <div class="flexboxItem navbar" style={styles.nav}>
+    {/* <AppBar className={classes.AppBar}> */}
       <Toolbar className={classes.Toolbar}>
         <Box className={classes.Box}>
         {
@@ -64,9 +69,11 @@ const Navbar = () => {
         }
         </Box>
       </Toolbar>
-    </AppBar>
+    {/* </AppBar> */}
     </div>
     </div>
+    </div>
+
   );
 };
 
@@ -83,18 +90,18 @@ export default Navbar;
 
 
 
-/* <Button sx={{ color: "white", width: '200px', height: '50px',display: 'inline-flexbox',  background: "rgb(151, 150, 150)",  fontSize: '16px',}}
+// /* <Button sx={{ color: "white", width: '200px', height: '50px',display: 'inline-flexbox',  background: "rgb(151, 150, 150)",  fontSize: '16px',}}
             
-            onClick={() => navigate("/")}
-            variant={location.pathname === "/" ? "outlined" : "text "}
-          >
-            Dashboard
-          </Button>
-          <Button sx={{ color: "white", width: '200px', height: '50px',display: 'inline-flexbox',  background: "rgb(151, 150, 150)",  fontSize: '16px',}}
+//             onClick={() => navigate("/")}
+//             variant={location.pathname === "/" ? "outlined" : "text "}
+//           >
+//             Dashboard
+//           </Button>
+//           <Button sx={{ color: "white", width: '200px', height: '50px',display: 'inline-flexbox',  background: "rgb(151, 150, 150)",  fontSize: '16px',}}
             
-            onClick={() => navigate("/qr")}
-            variant={location.pathname === "/qr" ? "contained" : "text "}
-          >
-            Generate QR Code
-          </Button>
-          <AuthenticatedUser /> */
+//             onClick={() => navigate("/qr")}
+//             variant={location.pathname === "/qr" ? "contained" : "text "}
+//           >
+//             Generate QR Code
+//           </Button>
+//           <AuthenticatedUser /> */

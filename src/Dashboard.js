@@ -3,7 +3,12 @@ import { render } from 'react-dom';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
+// import { Box } from "@mui/material";
+// import { makeStyles, createStyles} from "@mui/styles";
+
+
 const Dashboard = () => {
+
     const [rowData] = useState([
         { WO: '210', Date: '02/01/2023', Time: '10:23am',  User: '600', link: 'www.order213.com', status:'pending'},
         { WO: '212', Date: '02/01/2023', Time: '10:23am',  User: '600', link: 'www.order213.com', status:'pending'},
@@ -37,9 +42,37 @@ const Dashboard = () => {
         { field: 'status', filter:true, sortable:true }
         
       ]);
-    
+      const style = {
+        flexboxContainer:{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center'
+        },
+        flexboxItem:{
+          width: '100%',
+          height: '100%',
+          alignItems: 'center',
+          alignContent: 'center'
+        },
+        content:{
+          background: 'linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)',
+          backgroundSize: 'cover',
+        },
+        agThemeAlpine:{
+          height: '800px',
+          paddingLeft: '50px',
+          alignItems: 'center',
+          alignContent: 'center',
+          justifyContent: 'center',
+          paddingTop: '60px',
+          paddingBottom: '50px',
+          paddingRight: '50px'  
+        }
+
+      }
       return (
-        <div className="ag-theme-alpine" style={{
+        <div class="flexboxContainer flexboxItem" style={style.content}>
+          <div className="ag-theme-alpine" style={{
           height: '800px',
           paddingLeft: '50px',
           alignItems: 'center',
@@ -49,8 +82,11 @@ const Dashboard = () => {
           paddingBottom: '50px',
           paddingRight: '50px'  
         }}>
-          <AgGridReact rowData={rowData} columnDefs={columnDefs}></AgGridReact>
+          
+            <AgGridReact rowData={rowData} columnDefs={columnDefs}></AgGridReact>
         </div>
+      </div>
+
       );
     };
     
