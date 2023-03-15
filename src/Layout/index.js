@@ -7,6 +7,7 @@ import Navbar from "./Navbar";
 import Dashboard from "../Dashboard";
 import QRCodeGenerator from "../QRCodeGenerator";
 import Orders from "../Orders";
+import View from "../Order/View";
 const Layout = () => {
   return (
     <div className="top">
@@ -19,6 +20,7 @@ const Layout = () => {
             <Route path="/" element={<Dashboard />} />
             <Route path="/qr" element={<QRCodeGenerator />} />
             <Route path="/order/:orderId" element={<Orders />} />
+            <Route path="/order/:orderId/view" element={<View />} />
           </Routes>
         </div>  
     </div>

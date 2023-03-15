@@ -5,14 +5,14 @@ const options = {
     endpoint: CosmosDbConfig.Endpoint,
     key: CosmosDbConfig.Key,
     userAgentSuffix: 'OrderTracking'
-  };
+};
 
 const containerId = "Orders";
 
 const client = new CosmosClient(options);
 
 const OrderTrackingService = {
-    getOrders: async () => {        
+    getOrders: async () => {
         const querySpec = {
             query: 'SELECT * FROM Orders',
         };
@@ -26,20 +26,20 @@ const OrderTrackingService = {
         return orders;
     },
     getOrderById: async (id) => {
-       var order = await client
+        const { resource: order } = await client
             .database(CosmosDbConfig.DatabaseId)
             .container(containerId)
-            .item(id)
+            .item(id, id)
             .read()
 
         return order;
     },
     insertOrderLog: async (orderLog) => {
         await client
-        .database(CosmosDbConfig.DatabaseId)
-        .container(containerId)
-        .items
-        .create(orderLog);
+            .database(CosmosDbConfig.DatabaseId)
+            .container(containerId)
+            .items
+            .create(orderLog);
     }
 };
 
