@@ -30,7 +30,7 @@ const getRolesByUserId = async (userId) => {
     var response = await client
          .database(CosmosDbConfig.DatabaseId)
          .container(containerId)
-         .item(userId)
+         .item(userId, userId)
          .read()
 
      return response.item;
