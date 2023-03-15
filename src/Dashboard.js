@@ -39,7 +39,16 @@ const Dashboard = () => {
       ]);
     
       return (
-        <div className="ag-theme-alpine">
+        <div className="ag-theme-alpine" style={{
+          height: '800px',
+          paddingLeft: '50px',
+          alignItems: 'center',
+          alignContent: 'center',
+          justifyContent: 'center',
+          paddingTop: '60px',
+          paddingBottom: '50px',
+          paddingRight: '50px'  
+        }}>
           <AgGridReact rowData={rowData} columnDefs={columnDefs}></AgGridReact>
         </div>
       );

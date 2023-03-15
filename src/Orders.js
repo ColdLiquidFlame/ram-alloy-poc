@@ -1,54 +1,46 @@
-import { useParams } from "react-router-dom";
-
+import {useParams } from "react-router-dom";
 import React ,{useState} from 'react'
-// import { Button, Menu, MenuItem} from "@mui/material/";
+import { Button, MenuItem, Select, FormControl, InputLabel} from "@mui/material/";
 
-// import { Menu, MenuItem, MenuButton , SubMenu} from '@szhsin/react-menu';
-// import '@szhsin/react-menu/dist/index.css';
-// import '@szhsin/react-menu/dist/transitions/slide.css';
+// import { Form, Field } from 'react-final-form'
 
 
 const Orders = () =>{
   const getInitialState = () => {
-    const value = "";
-    return value;
-  };
-  
-  const [value, setValue] = useState(getInitialState);
-  
-  const handleChange = (e) => {
-    setValue(e.target.value);
-  };
-  
-  let { orderId } = useParams();
-    return(
-      <div className="ordertext">
+  const value = "";
+  return value;
+};
+
+const [value, setValue] = useState(getInitialState);
+
+const handleChange = (e) => {
+  setValue(e.target.value);
+};
+
+let { orderId } = useParams();
+  return(
+    <FormControl fullWidth>
+      <InputLabel>Sales</InputLabel>
         <div>Order # {orderId}
-        <h2>Sales</h2>
-        <strong>1. Setect location</strong>
-        <div className="selectb">
-          <select value={value} onChange={handleChange} placeholder={'Enter Name'}>
-            <option value="">Select</option>
-            <option value="Sales Desk">Sales Desk</option> 
-            <option value="Reviewed/Approved">Reviewed/Approved</option>
-            <option value="Return to Sales">Return to Sales</option>
-          </select>
+          <h2>Sales</h2>
+            <strong>1. Setect location</strong>
+            <Select value={value} onChange={handleChange} placeholder={'Enter Name'}>
+              <MenuItem  value="">Select</MenuItem >
+              <MenuItem  value="Sales Desk">Sales Desk</MenuItem > 
+              <MenuItem  value="Reviewed/Approved">Reviewed/Approved</MenuItem >
+              <MenuItem  value="Return to Sales">Return to Sales</MenuItem >
+            </Select>
+            <strong>2. Setect status</strong>
+            <Select value={value} onChange={handleChange} placeholder={'Enter Name'}>
+              <MenuItem  value="">Select</MenuItem >
+              <MenuItem  value="Started">Started</MenuItem > 
+              <MenuItem  value="Processing">Processing</MenuItem >
+              <MenuItem  value="Finished">Finished</MenuItem >
+            </Select>
+          <Button>submit</Button>
         </div>
-        <strong>2. Setect status</strong>
-          <div className="selectb">
-            <select value={value} onChange={handleChange} placeholder={'Enter Name'}>
-              <option value="">Select</option>
-              <option value="Started">Started</option> 
-              <option value="Processing">Processing</option>
-              <option value="Finished">Finished</option>
-            </select>
-          </div>
-          <div className="orderbutton">
-            <button>submit</button>
-          </div>
-       </div>
-      </div>
-    );
+    </FormControl>
+  );
 }
 export default Orders;
 
@@ -56,41 +48,3 @@ export default Orders;
 
 
 
-
-// const Orders = () => { 
-//   const [anchorEl, setAnchorEl] = React.useState(null);
-
-//   const handleClick = (event) => {
-//     setAnchorEl(event.currentTarget);
-//   };
-
-//   const handleClose = () => {
-//     setAnchorEl(null);
-//   };
-//   return (
-//     <div className='orderScreen'>
-//     <div>
-//     <div className="orderbutton">
-//       <button onClick={handleClick}>Location</button>
-//     </div>
-  
-//     <Menu
-//       id="simple-menu"
-//       anchorEl={anchorEl}
-//       keepMounted
-//       open={Boolean(anchorEl)}
-//       onClose={handleClose}
-//     >
-//       <MenuItem onClick={handleClose}>Station1</MenuItem>
-//       <MenuItem onClick={handleClose}>Station2</MenuItem>
-//       <MenuItem onClick={handleClose}>Station3</MenuItem>
-//     </Menu>
-//     <Button>Submit</Button>
-//     </div>
-//     </div>
-    
-    
-// );
-// };
-
-// export default Orders;

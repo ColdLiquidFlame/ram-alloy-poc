@@ -3,21 +3,22 @@ import React from 'react';
 import config from "./msalConfig";
 import { useMsalAuthentication } from "@azure/msal-react";
 import { InteractionType } from "@azure/msal-browser";
+import { makeStyles, createStyles} from "@mui/styles";
 // import {theme} from './theme';
+const useStyles = makeStyles((theme) => createStyles({
+  Button: { color: 'white', width: '200px', height: '50px',display: 'inline-flexbox',  background: 'lightGreen',  fontSize: '16px', border: '2px solid' },
+}));
 const Login = () => {
   const { login } = useMsalAuthentication(InteractionType.Silent, config);
-
+  const classes = useStyles();
   const onClick = async () => {
     await login(InteractionType.Redirect);
   };
 
   return (
     <>
-      <Button
-        onClick={onClick}
-        sx={{ color: "white", width: '200px', height: '50px',display: 'inline-flexbox',  background: "rgb(151, 150, 150)",  fontSize: '16px', float:'left',}}
-      >
-        Login
+      <Button className={classes.Button}
+        onClick={onClick}>Login
       </Button> 
     </>
   );
