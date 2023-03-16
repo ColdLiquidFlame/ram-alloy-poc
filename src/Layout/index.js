@@ -1,15 +1,13 @@
 import { Paper } from "@mui/material";
 import { Route, Routes } from "react-router-dom";
-// import '../main.css'
 import logo from './Logo.png';
 import React from 'react';
-// import ReactDOM from 'react-dom';
 import Navbar from "./Navbar";
 import Footer from "../Footer";
 import Dashboard from "../Dashboard";
 import QRCodeGenerator from "../QRCodeGenerator";
 import Orders from "../Orders";
-
+import View from "../Order/View";
 
 const styles = {
   flexboxContainer:{
@@ -47,7 +45,6 @@ const Layout = () => {
         <div class="flexboxItem top" style={styles.top}>
           <div class="flexboxItem secondtop" style={styles.seconttop}>
             <img alt="logo" class="img" style={styles.img} src={logo}/>
-            
                 <Paper>
                   <Navbar />
                 </Paper>
@@ -55,15 +52,16 @@ const Layout = () => {
                   <Route path="/" element={<Dashboard />} />
                   <Route path="/qr" element={<QRCodeGenerator />} />
                   <Route path="/order/:orderId" element={<Orders />} />
+                  <Route path="/order/:orderId/view" element={<View />} />
                 </Routes>
                 <div className="footer" style={styles.footer}>
-                <Paper>
-                  <Footer />
-                </Paper>
+                  <Paper>
+                   <Footer />
+                  </Paper>
+                </div>
             </div>
-          </div>
-        </div> 
-    </div>
+          </div> 
+      </div>
     </div>
   );
 };
