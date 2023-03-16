@@ -1,9 +1,6 @@
-// import '../main.css'
 import React from 'react';
-// import {Box, Button, AppBar, Toolbar} from "@mui/material/"
 import {Box, Button, Toolbar} from "@mui/material/"
 
-import { makeStyles, createStyles} from "@mui/styles";
 import { useLocation, useNavigate } from "react-router-dom";
 import AuthenticatedUser from "../AuthenticatedUser";
 const styles = {
@@ -21,7 +18,6 @@ const styles = {
   nav:{
     fontFamily: 'Arial',
     backgroundColor:'#888888',
-    // backgroundColor:'yellow',
 
     overflow:'hidden',
     marginBottom: '25px',
@@ -36,72 +32,34 @@ const navButtons = [
   { title: "Login", render: <AuthenticatedUser />}
 ];
 
-const useStyles = makeStyles((theme) => createStyles({
-  Button: { color: 'primary', width: '200px', height: '50px',  fontSize: '16px', border: 'none' },
-  Box: { flexGrow: 1, display: { xs: "none", md: "flex" } },
-  AppBar: {position:"static"},
-  Toolbar: {p:"100px"}
-}));
 
 const Navbar = () => {
   const navigate = useNavigate();
   var location = useLocation();
 
   console.log("location: {location}", location);
-  const classes = useStyles();
 
   return (
     <div class="flexboxContainer" style={styles.flexboxContainer}>
       <div class='flexboxItem' style={styles.flexboxItem}>
         <div class="flexboxItem navbar" style={styles.nav}>
-    {/* <AppBar className={classes.AppBar}> */}
-      <Toolbar className={classes.Toolbar}>
-        <Box className={classes.Box}>
-        {
-          navButtons.map(x => x.render ? x.render :
-            <Button key={x.title} className={classes.Button}
-            onClick={() => navigate(x.link)}
-            variant={location.pathname === "/" ? "outlined" : "text "}
-          >
-            {x.title}
-          </Button>
-            )
-        }
-        </Box>
-      </Toolbar>
-    {/* </AppBar> */}
+          <Toolbar>
+            <Box>
+              {navButtons.map(x => x.render ? x.render :
+              <Button key={x.title}
+                onClick={() => navigate(x.link)}
+                variant={location.pathname === "/" ? "outlined" : "text "}
+                >
+                {x.title}
+              </Button>
+              )
+              }
+            </Box>
+          </Toolbar>
+        </div>
+      </div>
     </div>
-    </div>
-    </div>
-
   );
 };
 
 export default Navbar;
-
-
-
-
-  /* <Box sx={{ flexGrow: 1, display: { s: "flex", md: "none" } }}>
-          <IconButton>
-            <MenuIcon />
-          </IconButton>
-        </Box> */
-
-
-
-// /* <Button sx={{ color: "white", width: '200px', height: '50px',display: 'inline-flexbox',  background: "rgb(151, 150, 150)",  fontSize: '16px',}}
-            
-//             onClick={() => navigate("/")}
-//             variant={location.pathname === "/" ? "outlined" : "text "}
-//           >
-//             Dashboard
-//           </Button>
-//           <Button sx={{ color: "white", width: '200px', height: '50px',display: 'inline-flexbox',  background: "rgb(151, 150, 150)",  fontSize: '16px',}}
-            
-//             onClick={() => navigate("/qr")}
-//             variant={location.pathname === "/qr" ? "contained" : "text "}
-//           >
-//             Generate QR Code
-//           </Button>
-//           <AuthenticatedUser /> */
