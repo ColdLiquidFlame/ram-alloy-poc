@@ -1,6 +1,8 @@
-import { TextField, Button, Link, Box } from "@mui/material";
-import React, { useState } from 'react';
+import { TextField } from "@mui/material";
+import React, { useState } from "react";
 import QRCode from "react-qr-code";
+import Button from "./Shared/Button";
+import { Box } from "@mui/system";
 
 const styles = {
   flexboxContainer:{
@@ -19,29 +21,44 @@ const styles = {
     backgroundSize: 'cover',
   },
 }
- const QRCodeGenerator = () => {
-    const [value, setValue] = useState('');
 
-    return (
-      <div className="flexboxItem content" style={styles.content}> 
-        <Box>
-          <TextField 
-            label="Order #"
-            variant="filled"
-            value={value}
-            onChange={(e) => setValue(e.target.value)}/>
-        </Box>
-        <Box>
-          <QRCode value={"https://zealous-plant-09bf75710.2.azurestaticapps.net/order/" + value}/>
-        </Box>
-        <Box>
-          {value && <> <Link href={value} download={"work #.pdf"}>
-            <Button type="button">Download Cover Sheet</Button>
-            </Link>
-          </>}
-        </Box>
-      </div>
-    );
-  }
+const QRCodeGenerator = () => {
+  const [value, setValue] = useState("");
 
- export default QRCodeGenerator;
+  return (
+    <Box
+      sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
+      <TextField
+        style={{
+          backgroundColor: "#e0e2e4",
+          marginBottom: 20,
+          width: "200px",
+        }}
+        id="standard-basic"
+        label="Order Id"
+        sx={{
+          color: "primary",
+          boxShadow: "inset 0px 2px 2px 0px rgb(0 0 0 / 65%)",
+          "& .MuiFilledInput-root::before, & .MuiFilledInput-root::after": {
+            border: 0,
+          },
+          "& > .MuiFormLabel-root.Mui-focused": {
+            color: "#848586",
+          },
+        }}
+        value={value}
+        variant="filled"
+        onChange={(e) => setValue(e.target.value)}
+      />
+      <QRCode size={200} value={`${window.location.origin}/order/${value}`} />
+      {value && (
+        <Button sx={{ width: "200px" }} type="button">
+          Download Cover Sheet
+        </Button>
+      )}
+    </Box>
+  );
+};
+
+export default QRCodeGenerator;

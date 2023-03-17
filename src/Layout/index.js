@@ -1,11 +1,21 @@
-import { Paper } from "@mui/material";
+import "../main.css";
+
+import { useAuth0 } from "@auth0/auth0-react";
+import { Box } from "@mui/material";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
+
 import logo from './Logo.png';
 import React from 'react';
 import Navbar from "./Navbar";
 import Footer from "../Footer";
 import Dashboard from "../Dashboard";
+import Navbar from "../NavBar";
+import Orders from "../Order/Orders";
+import View from "../Order/View";
 import QRCodeGenerator from "../QRCodeGenerator";
+import Redirect from "../Redirect";
+
 import Orders from "../Orders";
 import View from "../Order/View";
 
@@ -39,28 +49,29 @@ const styles = {
   
 }
 const Layout = () => {
+  const { isLoading } = useAuth0();
+
   return (
-    <div class="flexboxContainer" style={styles.flexboxContainer}>
-      <div class='flexboxItem' style={styles.flexboxItem}>
-        <div class="flexboxItem top" style={styles.top}>
-          <div class="flexboxItem secondtop" style={styles.seconttop}>
-            <img alt="logo" class="img" style={styles.img} src={logo}/>
-              <Paper>
-                <Navbar />
-              </Paper>
-              <Routes>
-                <Route path="/" element={<Dashboard />} />
-                <Route path="/qr" element={<QRCodeGenerator />} />
-                <Route path="/order/:orderId" element={<Orders />} />
-                <Route path="/order/:orderId/view" element={<View />} />
-              </Routes>
-              <Paper>
-                <Footer />
-              </Paper>
-            </div>
-        </div> 
-      </div>
-    </div>
+    <Box>
+      <Navbar />
+      <Box
+        sx={{
+          padding: "1em 30em",
+        }}
+      >
+        {isLoading ? (
+          <Redirect />
+        ) : (
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/qr" element={<QRCodeGenerator />} />
+            <Route path="/order/:orderId" element={<Orders />} />
+            <Route path="/order/:orderId/view" element={<View />} />
+            <Route path="/redirect" element={<Redirect />} />
+          </Routes>
+        )}
+      </Box>
+    </Box>
   );
 };
 

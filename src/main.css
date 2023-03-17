@@ -1,4 +1,4 @@
-/*header{
+header{
     text-align: center;
 }
 body {
@@ -261,17 +261,36 @@ span{
     z-index: 100;
     border: solid 1px;
 }
-/* .ag-theme-alpine{
-    height: 800px;
+.ag-theme-alpine{
+    height: 600px;
     padding-left: 50px;
     width: 100%; 
     align-items: 'center';
     align-content: 'center';
     justify-content: 'center';
     display: 'grid';
-    padding-top: 60px;
     padding-bottom: 50px;
     padding-right: 50px;   
+}
+/* footer {
+    text-align: center;
+    padding: 3px;
+    background: #48484a;
+    color: #333;
+    padding-bottom: 150px;
+    padding-top: 150px;
 } */
-
-
+.QRButton button{
+    color: #fff;
+    text-transform: uppercase;
+    width: 200px;
+    height: 50px;
+    display: inline-flexbox;
+    background: #555758;
+    background: linear-gradient(to bottom, #555758 0%,#3d3e3f 100%);
+    text-align: center;
+    position:static;
+    float: center;
+    margin-bottom: 50px;
+    
+}
