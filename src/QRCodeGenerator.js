@@ -4,23 +4,23 @@ import QRCode from "react-qr-code";
 import Button from "./Shared/Button";
 import { Box } from "@mui/system";
 
-const styles = {
-  flexboxContainer:{
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center'
-  },
-  flexboxItem:{
-    width: '100%',
-    height: '100%',
-    alignItems: 'center',
-    alignContent: 'center'
-  },
-  content:{
-    background: 'linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)',
-    backgroundSize: 'cover',
-  },
-}
+// const styles = {
+//   flexboxContainer:{
+//     display: 'flex',
+//     flexDirection: 'column',
+//     justifyContent: 'center'
+//   },
+//   flexboxItem:{
+//     width: '100%',
+//     height: '100%',
+//     alignItems: 'center',
+//     alignContent: 'center'
+//   },
+//   content:{
+//     background: 'linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)',
+//     backgroundSize: 'cover',
+//   },
+// }
 
 const QRCodeGenerator = () => {
   const [value, setValue] = useState("");

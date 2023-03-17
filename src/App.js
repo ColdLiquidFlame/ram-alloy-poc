@@ -1,11 +1,11 @@
 import React from "react";
 import Layout from "./Layout";
 import { BrowserRouter } from "react-router-dom";
-import { Auth0Provider } from "@auth0/auth0-react";
+// import { Auth0Provider } from "@auth0/auth0-react";
 import { Provider } from 'react-redux';
 import store from "./Store/store"
 import "./App.css";
-import "./main.css";
+// import "./main.css";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";

@@ -1,4 +1,4 @@
-import "../main.css";
+// import "../main.css";
 import React from "react";
 import { Link, matchPath, useLocation } from "react-router-dom";
 import AuthenticatedUser from "./AuthenticatedUser";
