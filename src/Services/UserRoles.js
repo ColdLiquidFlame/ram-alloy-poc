@@ -2,84 +2,78 @@ import { CosmosClient } from "@azure/cosmos";
 import CosmosDbConfig from "../Config/database";
 
 const options = {
-    endpoint: CosmosDbConfig.Endpoint,
-    key: CosmosDbConfig.Key,
-    userAgentSuffix: 'UserRoles'
-  };
+  endpoint: CosmosDbConfig.Endpoint,
+  key: CosmosDbConfig.Key,
+  userAgentSuffix: "UserRoles",
+};
 
 const containerId = "UserRoles";
 
 const client = new CosmosClient(options);
 
-const getUserRoles = async () => {        
-    const querySpec = {
-        query: 'SELECT * FROM Orders',
-    };
+const getUserRoles = async () => {
+  const querySpec = {
+    query: "SELECT * FROM Orders",
+  };
 
-    const { resources: orders } = await client
-        .database(CosmosDbConfig.DatabaseId)
-        .container(containerId)
-        .items
-        .query(querySpec)
-        .fetchAll()
-    return orders;
+  const { resources: orders } = await client
+    .database(CosmosDbConfig.DatabaseId)
+    .container(containerId)
+    .items.query(querySpec)
+    .fetchAll();
+  return orders;
 };
 
-
 const getRolesByUserId = async (userId) => {
-    var response = await client
-         .database(CosmosDbConfig.DatabaseId)
-         .container(containerId)
-         .item(userId, userId)
-         .read()
+  var response = await client
+    .database(CosmosDbConfig.DatabaseId)
+    .container(containerId)
+    .item(userId, userId)
+    .read();
 
-     return response.item;
+  return response.item;
 };
 
 const updateUserRoles = async (userRoles) => {
-    
-    const { id, email } = userRoles;
-    
-    const querySpec = {
-        query: 'SELECT * FROM UserRoles ur WHERE ur.id = @UserId',
-        parameters: [{
-            name: "@UserId",
-            value: id
-        }]
-    };
+  const { id, email } = userRoles;
 
-    const { resources: existingUserRoles } = await client
-        .database(CosmosDbConfig.DatabaseId)
-        .container(containerId)
-        .items
-        .query(querySpec)
-        .fetchAll();
+  const querySpec = {
+    query: "SELECT * FROM UserRoles ur WHERE ur.id = @UserId",
+    parameters: [
+      {
+        name: "@UserId",
+        value: id,
+      },
+    ],
+  };
 
-    const [existingUserRole] = existingUserRoles;
+  const { resources: existingUserRoles } = await client
+    .database(CosmosDbConfig.DatabaseId)
+    .container(containerId)
+    .items.query(querySpec)
+    .fetchAll();
 
-    if(existingUserRole === undefined)
-    {
-        existingUserRole = { id, email, roles: [] };
-        await client
-        .database(CosmosDbConfig.DatabaseId)
-        .container(containerId)
-        .items
-        .upsert({id, email, roles: []});
-    }
-    else if(existingUserRole?.email !== email)
-    {
-        await client
-        .database(CosmosDbConfig.DatabaseId)
-        .container(containerId)
-        .item(id)
-        .patch({email: email});
-    }
+  let [existingUserRole] = existingUserRoles;
 
-    return existingUserRole;
+  if (existingUserRole === undefined) {
+    existingUserRole = { id, email, roles: [] };
+    await client
+      .database(CosmosDbConfig.DatabaseId)
+      .container(containerId)
+      .items.upsert({ id, email, roles: [] });
+  } else if (existingUserRole?.email !== email) {
+    await client
+      .database(CosmosDbConfig.DatabaseId)
+      .container(containerId)
+      .item(id)
+      .patch({ email: email });
+  }
+
+  return existingUserRole;
 };
 
 export default {
-    getUserRoles,
-    getRolesByUserId,
-    updateUserRoles
+  getUserRoles,
+  getRolesByUserId,
+  updateUserRoles,
 };

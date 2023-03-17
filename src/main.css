@@ -1,4 +1,4 @@
-header{
+/* header{
     text-align: center;
 }
 .top {
@@ -114,17 +114,7 @@ img {
     height: 100%;
     margin-bottom: 10px;
 }
-.ag-theme-alpine{
-    height: 600px;
-    padding-left: 50px;
-    width: 100%; 
-    align-items: 'center';
-    align-content: 'center';
-    justify-content: 'center';
-    display: 'grid';
-    padding-bottom: 50px;
-    padding-right: 50px;   
-}
+
 /* footer {
     text-align: center;
     padding: 3px;
@@ -133,7 +123,7 @@ img {
     padding-bottom: 150px;
     padding-top: 150px;
 } */
-.QRButton button{
+/*.QRButton button{
     color: #fff;
     text-transform: uppercase;
     width: 200px;
@@ -146,4 +136,13 @@ img {
     float: center;
     margin-bottom: 50px;
     
+} */
+.ag-theme-alpine {
+  display: "grid";
+
+  height: 600px;
+  width: 100%;
+  align-items: "center";
+  align-content: "center";
+  justify-content: "center";
 }

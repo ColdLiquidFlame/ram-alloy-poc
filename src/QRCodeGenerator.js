@@ -1,37 +1,49 @@
 import { TextField } from "@mui/material";
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import QRCode from "react-qr-code";
+import Button from "./Shared/Button";
+import { Box } from "@mui/system";
 
- const QRCodeGenerator = () => {
-    const [value, setValue] = useState('');
-    
-    return (
-      <div className="content">
-        <div className="qrcodecontent">
-          <div className="text">
-            <TextField style={{backgroundColor: "lightgrey",marginBottom: 20,}}
-               id="standard-basic"
-               label="Order Id"
-               className="classes.textfield"
-               value={value}
-               variant="filled"
-               size="large"
-               color="primary"
-               onChange={(e) => setValue(e.target.value)}
-              />
-          <div className="qr">
-            <QRCode value={"https://zealous-plant-09bf75710.2.azurestaticapps.net/order/" + value}/>
-          </div>
-            {value && <> <a href={value} download={"work#.pdf"}>
-              <div className="QRButton">
-                <button type="button">Download Cover Sheet</button>
-              </div>
-              </a>
-            </>}
-          </div>
-        </div>
-      </div>
-    );
-  }
+const QRCodeGenerator = () => {
+  const [value, setValue] = useState("");
 
- export default QRCodeGenerator;
+  return (
+    <Box
+      sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
+      <TextField
+        style={{
+          backgroundColor: "#e0e2e4",
+          marginBottom: 20,
+          width: "200px",
+        }}
+        id="standard-basic"
+        label="Order Id"
+        sx={{
+          color: "primary",
+          boxShadow: "inset 0px 2px 2px 0px rgb(0 0 0 / 65%)",
+          "& .MuiFilledInput-root::before, & .MuiFilledInput-root::after": {
+            border: 0,
+          },
+          "& > .MuiFormLabel-root.Mui-focused": {
+            color: "#848586",
+          },
+        }}
+        value={value}
+        variant="filled"
+        onChange={(e) => setValue(e.target.value)}
+      />
+      <QRCode
+        size={200}
+        value={`${process.env.REACT_APP_STATIC_URL}/order/${value}`}
+      />
+      {value && (
+        <Button sx={{ width: "200px" }} type="button">
+          Download Cover Sheet
+        </Button>
+      )}
+    </Box>
+  );
+};
+
+export default QRCodeGenerator;
