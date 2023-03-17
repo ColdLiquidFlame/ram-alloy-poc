@@ -1,29 +1,41 @@
-import { Paper } from "@mui/material";
+import "../main.css";
+
+import { useAuth0 } from "@auth0/auth0-react";
+import { Box } from "@mui/material";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
-import '../main.css'
-import logo from './Logo.png';
-import React from 'react';
-import Navbar from "./Navbar";
+
 import Dashboard from "../Dashboard";
-import QRCodeGenerator from "../QRCodeGenerator";
-import Orders from "../Orders";
+import Navbar from "../NavBar";
+import Orders from "../Order/Orders";
 import View from "../Order/View";
+import QRCodeGenerator from "../QRCodeGenerator";
+import Redirect from "../Redirect";
+
 const Layout = () => {
+  const { isLoading } = useAuth0();
+
   return (
-    <div className="top">
-      <img alt="" src={logo}/>
-        <div className="content">
-          <Paper>
-            <Navbar />
-          </Paper>
+    <Box>
+      <Navbar />
+      <Box
+        sx={{
+          padding: "1em 30em",
+        }}
+      >
+        {isLoading ? (
+          <Redirect />
+        ) : (
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/qr" element={<QRCodeGenerator />} />
             <Route path="/order/:orderId" element={<Orders />} />
             <Route path="/order/:orderId/view" element={<View />} />
+            <Route path="/redirect" element={<Redirect />} />
           </Routes>
-        </div>  
-    </div>
+        )}
+      </Box>
+    </Box>
   );
 };
 
