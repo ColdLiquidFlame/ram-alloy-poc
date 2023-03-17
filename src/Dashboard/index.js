@@ -25,7 +25,7 @@ const columnDefs = [
   { field: "status", filter: true, sortable: true },
 ];
 
-export default () => {
+const Dashboard = () => {
   useEffect(() => {
     async function fetchOrders() {
       var orders = await OrderTrackingService.getOrders();
@@ -44,3 +44,5 @@ export default () => {
     </div>
   );
 };
+
+export default Dashboard;

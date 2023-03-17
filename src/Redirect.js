@@ -1,5 +1,7 @@
 import React from "react";
 
-export default () => {
+const Redirect = () => {
   return <div>Logging in...</div>;
 };
+
+export default Redirect;

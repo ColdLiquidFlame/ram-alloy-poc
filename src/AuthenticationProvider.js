@@ -3,7 +3,7 @@ import { Auth0Provider } from "@auth0/auth0-react";
 import React from "react";
 import { useNavigate } from "react-router";
 
-export default ({ children, ...props }) => {
+const AuthenticationProvider = ({ children, ...props }) => {
   const navigate = useNavigate();
   const handleCallback = (appState) => {
     navigate(appState?.returnTo || window.location.pathname, { replace: true });
@@ -22,3 +22,5 @@ export default ({ children, ...props }) => {
     </Auth0Provider>
   );
 };
+
+export default AuthenticationProvider;

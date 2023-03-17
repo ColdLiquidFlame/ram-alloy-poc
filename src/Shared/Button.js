@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "@mui/material/Button";
 
-export default ({ sx = [], ...props }) => {
+const StyledButton = ({ sx = [], ...props }) => {
   return (
     <Button
       sx={[
@@ -20,3 +20,5 @@ export default ({ sx = [], ...props }) => {
     />
   );
 };
+
+export default StyledButton;

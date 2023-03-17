@@ -72,8 +72,10 @@ const updateUserRoles = async (userRoles) => {
   return existingUserRole;
 };
 
-export default {
+const service = {
   getUserRoles,
   getRolesByUserId,
   updateUserRoles,
 };
+
+export default service;

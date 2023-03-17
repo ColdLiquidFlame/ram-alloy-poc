@@ -1,7 +1,7 @@
 import { Box } from "@mui/system";
 import React from "react";
 
-export default () => (
+const Spacer = () => (
   <Box
     sx={{
       display: "flex",
@@ -17,3 +17,5 @@ export default () => (
     />
   </Box>
 );
+
+export default Spacer;
