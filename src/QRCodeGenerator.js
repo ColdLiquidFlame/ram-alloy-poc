@@ -33,10 +33,7 @@ const QRCodeGenerator = () => {
         variant="filled"
         onChange={(e) => setValue(e.target.value)}
       />
-      <QRCode
-        size={200}
-        value={`${process.env.REACT_APP_STATIC_URL}/order/${value}`}
-      />
+      <QRCode size={200} value={`${window.location.origin}/order/${value}`} />
       {value && (
         <Button sx={{ width: "200px" }} type="button">
           Download Cover Sheet
