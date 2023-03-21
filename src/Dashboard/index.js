@@ -40,7 +40,11 @@ const Dashboard = () => {
 
   return (
     <div className="ag-theme-alpine">
-      <AgGridReact rowData={orders} columnDefs={columnDefs} />
+      <AgGridReact
+        rowData={orders}
+        columnDefs={columnDefs}
+        domLayout="autoHeight"
+      />
     </div>
   );
 };
