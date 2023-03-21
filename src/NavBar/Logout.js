@@ -26,7 +26,7 @@ const Logout = () => {
   };
 
   const handleLogout = () => {
-    logout();
+    logout({ logoutParams: { returnTo: window.location.origin } });
     setAnchorElUser(null);
   };
 

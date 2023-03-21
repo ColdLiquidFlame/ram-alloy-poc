@@ -3,7 +3,7 @@ import { Auth0Provider } from "@auth0/auth0-react";
 import React from "react";
 import { useNavigate } from "react-router";
 
-const AuthenticationProvider = ({ children, ...props }) => {
+const AuthenticationProvider = ({ children }) => {
   const navigate = useNavigate();
   const handleCallback = (appState) => {
     navigate(appState?.returnTo || window.location.pathname, { replace: true });

@@ -5,8 +5,8 @@ import AuthenticatedUser from "./AuthenticatedUser";
 import { AppBar, Tab, Tabs } from "@mui/material";
 import { Box } from "@mui/system";
 
-import logo from "./Logo.png";
 import Spacer from "./Spacer";
+import MenuBar from "./MenuBar";
 
 const navButtons = [
   { title: "Dashboard", link: "/" },
@@ -47,11 +47,25 @@ const Navbar = () => {
           flexDirection: "row",
         }}
       >
-        <Spacer />
-        <Box sx={{ display: "flex" }}>
-          <img src={logo} alt="Ram Alloys" />
+        <MenuBar sx={{ display: { xs: "flex", lg: "none" } }} />
+        <Box
+          sx={{
+            display: { xs: "none", lg: "flex" },
+          }}
+        >
+          <Box sx={{ background: "linear-gradient(#84878C, #505155)" }} />
+          <img
+            src={process.env.PUBLIC_URL + "/images/Logo.png"}
+            alt="Ram Alloys"
+          />
         </Box>
-
+        <Box sx={{ display: { xs: "flex", lg: "none" } }}>
+          <img
+            src={process.env.PUBLIC_URL + "/images/Logo.png"}
+            alt="Ram Alloys"
+            width={"150px"}
+          />
+        </Box>
         <Box
           sx={{
             flex: "1 1 auto",
@@ -64,7 +78,6 @@ const Navbar = () => {
             value={currentTab}
             sx={{
               background: "linear-gradient(#84878C, #505155)",
-              minWidth: "23em",
               width: "100%",
               "& .MuiTabs-indicator": {
                 backgroundColor: "#f30537",
@@ -81,6 +94,7 @@ const Navbar = () => {
                 value={button.link}
                 component={Link}
                 sx={{
+                  display: { xs: "none", lg: "block" },
                   color: "white",
                   fontFamily: "Montserrat, sans-serif",
                   "&.Mui-selected": {
@@ -90,9 +104,13 @@ const Navbar = () => {
               />
             ))}
           </Tabs>
-          <AuthenticatedUser />
+          <AuthenticatedUser
+            sx={{
+              minWidth: "3em",
+            }}
+          />
         </Box>
-        <Spacer />
+        <Spacer sx={{ display: { xs: "none", lg: "flex" } }} />
       </Box>
     </AppBar>
   );

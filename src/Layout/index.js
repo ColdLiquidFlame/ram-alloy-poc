@@ -20,7 +20,8 @@ const Layout = () => {
       <Navbar />
       <Box
         sx={{
-          padding: "1em 30em",
+          padding: "1em",
+          height: "100%",
         }}
       >
         {isLoading ? (

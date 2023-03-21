@@ -8,9 +8,7 @@ const QRCodeGenerator = () => {
   const [value, setValue] = useState("");
 
   return (
-    <Box
-      sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
-    >
+    <Box sx={{ display: "flex", flexDirection: "column" }}>
       <TextField
         style={{
           backgroundColor: "#e0e2e4",
