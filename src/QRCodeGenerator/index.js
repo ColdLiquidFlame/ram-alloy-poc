@@ -35,7 +35,7 @@ const QRCodeGenerator = () => {
             width: "200px",
           }}
           id="standard-basic"
-          label="Order Id"
+          label="Work Order ID"
           sx={{
             color: "primary",
             boxShadow: "inset 0px 2px 2px 0px rgb(0 0 0 / 65%)",
