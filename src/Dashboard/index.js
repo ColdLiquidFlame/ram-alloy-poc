@@ -3,9 +3,11 @@ import "ag-grid-community/styles/ag-theme-alpine.css";
 
 import { AgGridReact } from "ag-grid-react";
 import { Link } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
 import OrderTrackingService from "../Services/OrderTracking";
+import { Box } from "@mui/material";
+import moment from "moment/moment";
 
 const columnDefs = [
   {
@@ -18,14 +20,29 @@ const columnDefs = [
     },
   },
   { field: "id", filter: true, sortable: true, headerName: "WO#" },
-  { field: "Date", filter: true, sortable: true },
-  { field: "Time", filter: true, sortable: true },
-  { field: "User", filter: true, sortable: true },
-  { field: "link", filter: true, sortable: true },
+  {
+    field: "createdDate",
+    filter: true,
+    sortable: true,
+    valueFormatter: (params) =>
+      params?.data?.createdDate
+        ? moment(params?.data?.createdDate).format("MM/DD/YYYY h:mm a")
+        : null,
+  },
+  { field: "user.nickname", headerName: "User", filter: true, sortable: true },
+  {
+    headerName: "PDF",
+    filter: true,
+    sortable: true,
+    cellRenderer: (params) => (
+      <Link to={`order/${params.data.id}/pdf`}>View PDF</Link>
+    ),
+  },
   { field: "status", filter: true, sortable: true },
 ];
 
 const Dashboard = () => {
+  const gridRef = useRef();
   useEffect(() => {
     async function fetchOrders() {
       var orders = await OrderTrackingService.getOrders();
@@ -36,16 +53,38 @@ const Dashboard = () => {
     fetchOrders();
   }, []);
 
+  const onGridReady = useCallback((params) => {
+    params.api.sizeColumnsToFit();
+    window.addEventListener("resize", function () {
+      setTimeout(function () {
+        params.api.sizeColumnsToFit();
+      });
+    });
+
+    gridRef.current.api.sizeColumnsToFit();
+  }, []);
+
   const [orders, setOrders] = useState([]);
 
   return (
-    <div className="ag-theme-alpine">
-      <AgGridReact
-        rowData={orders}
-        columnDefs={columnDefs}
-        domLayout="autoHeight"
-      />
-    </div>
+    <Box sx={{ width: "100%", height: "100%" }}>
+      <Box sx={{ display: "flex", flexDirection: "row", height: "100%" }}>
+        <Box sx={{ overflow: "hidden", flexGrow: "1" }}>
+          <Box
+            sx={{ height: "100%", width: "100%" }}
+            className="ag-theme-alpine"
+          >
+            <AgGridReact
+              ref={gridRef}
+              rowData={orders}
+              columnDefs={columnDefs}
+              onGridReady={onGridReady}
+              domLayout="autoHeight"
+            />
+          </Box>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 
