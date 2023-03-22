@@ -9,7 +9,8 @@ import {
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Button from "../Shared/Button";
-import useUserRoles from "../Hooks/UserRoles";
+import useAuthenticatedUser from "../Hooks/useAuthenticatedUser";
+import OrderTrackingService from "../Services/OrderTracking";
 
 const stations = {
   sales: ["Sales Desk", "Reviewed/Approved", "Return to Sales"],
@@ -32,7 +33,7 @@ const Orders = () => {
   const [station, setStation] = useState("");
   const [status, setStatus] = useState("");
   const [buckets, setBuckets] = useState([]);
-  const { roles } = useUserRoles();
+  const { roles, user } = useAuthenticatedUser();
 
   useEffect(() => {
     const options = (roles ?? []).reduce((options, role) => {
@@ -48,6 +49,15 @@ const Orders = () => {
 
   const handleStatusChange = (e) => {
     setStatus(e.target.value);
+  };
+
+  const handleButtonClick = async () => {
+    await OrderTrackingService.addLogToOrder(orderId, {
+      status,
+      station,
+      user,
+      createdDate: new Date(),
+    });
   };
 
   return (
@@ -93,7 +103,7 @@ const Orders = () => {
           <MenuItem value="Finished">Finished</MenuItem>
         </Select>
       </FormControl>
-      <Button>submit</Button>
+      <Button onClick={handleButtonClick}>submit</Button>
     </Box>
   );
 };

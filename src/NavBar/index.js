@@ -53,7 +53,6 @@ const Navbar = () => {
             display: { xs: "none", lg: "flex" },
           }}
         >
-          <Box sx={{ background: "linear-gradient(#84878C, #505155)" }} />
           <img
             src={process.env.PUBLIC_URL + "/images/Logo.png"}
             alt="Ram Alloys"

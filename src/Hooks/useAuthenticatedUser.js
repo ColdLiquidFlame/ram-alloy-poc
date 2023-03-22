@@ -4,7 +4,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import UserRolesService from "../Services/UserRoles";
 import { useLocation } from "react-router";
 
-const useUserRoles = () => {
+const useAuthenticatedUser = () => {
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
   const [roles, setRoles] = useState([]);
   const { pathname } = useLocation();
@@ -15,6 +15,7 @@ const useUserRoles = () => {
         const profile = await UserRolesService.updateUserRoles({
           id: user?.sub,
           email: user?.email,
+          nickname: user?.nickname,
         });
         setRoles(profile.roles);
       } else {
@@ -29,7 +30,7 @@ const useUserRoles = () => {
     updateUserRole();
   }, [user, isAuthenticated, loginWithRedirect, pathname]);
 
-  return { roles };
+  return { roles, user, isAuthenticated };
 };
 
-export default useUserRoles;
+export default useAuthenticatedUser;

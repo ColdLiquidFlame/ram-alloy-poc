@@ -35,7 +35,7 @@ const getRolesByUserId = async (userId) => {
 };
 
 const updateUserRoles = async (userRoles) => {
-  const { id, email } = userRoles;
+  const { id, email, nickname } = userRoles;
 
   const querySpec = {
     query: "SELECT * FROM UserRoles ur WHERE ur.id = @UserId",
@@ -60,13 +60,24 @@ const updateUserRoles = async (userRoles) => {
     await client
       .database(CosmosDbConfig.DatabaseId)
       .container(containerId)
-      .items.upsert({ id, email, roles: [] });
-  } else if (existingUserRole?.email !== email) {
-    await client
-      .database(CosmosDbConfig.DatabaseId)
-      .container(containerId)
-      .item(id)
-      .patch({ email: email });
+      .items.upsert({ id, username: nickname, email, roles: [] });
+  } else {
+    const patchOperations = [];
+    if (existingUserRole?.email !== email) {
+      patchOperations.push({ op: "add", path: "/email", value: email });
+    }
+
+    if (existingUserRole?.nickname !== nickname) {
+      patchOperations.push({ op: "add", path: "/nickname", value: nickname });
+    }
+
+    if (patchOperations.length > 0) {
+      await client
+        .database(CosmosDbConfig.DatabaseId)
+        .container(containerId)
+        .item(id, id)
+        .patch(patchOperations);
+    }
   }
 
   return existingUserRole;

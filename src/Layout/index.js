@@ -11,6 +11,7 @@ import Orders from "../Order/Orders";
 import View from "../Order/View";
 import QRCodeGenerator from "../QRCodeGenerator";
 import Redirect from "../Redirect";
+import QrPrintPreview from "../QRCodeGenerator/QrPrintPreview";
 
 const Layout = () => {
   const { isLoading } = useAuth0();
@@ -32,6 +33,7 @@ const Layout = () => {
             <Route path="/qr" element={<QRCodeGenerator />} />
             <Route path="/order/:orderId" element={<Orders />} />
             <Route path="/order/:orderId/view" element={<View />} />
+            <Route path="/order/:orderId/Pdf" element={<QrPrintPreview />} />
             <Route path="/redirect" element={<Redirect />} />
           </Routes>
         )}

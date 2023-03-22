@@ -6,12 +6,26 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import OrderTrackingService from "../Services/OrderTracking";
+import moment from "moment";
 
 const columnDefs = [
-  { field: "id", filter: true, headerName: "Log Id", sortable: true },
   { field: "station", filter: true, sortable: true },
-  { field: "action", filter: true, sortable: true },
-  { field: "timestamp", filter: true, sortable: true },
+  { field: "status", filter: true, sortable: true },
+  {
+    field: "createdDate",
+    filter: true,
+    sortable: true,
+    valueFormatter: (params) =>
+      params?.data?.createdDate
+        ? moment(params?.data?.createdDate).format("MM/DD/YYYY h:mm a")
+        : null,
+  },
+  {
+    field: "user.nickname",
+    headerName: "Created By",
+    filter: true,
+    sortable: true,
+  },
 ];
 
 const OrderView = () => {
@@ -35,7 +49,11 @@ const OrderView = () => {
     <>
       <h3>WorkOrder#: {orderId} Logs</h3>
       <div className="ag-theme-alpine">
-        <AgGridReact rowData={logs} columnDefs={columnDefs} />
+        <AgGridReact
+          rowData={logs}
+          columnDefs={columnDefs}
+          domLayout="autoHeight"
+        />
       </div>
     </>
   );
