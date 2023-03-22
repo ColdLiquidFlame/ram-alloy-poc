@@ -17,7 +17,13 @@ import OrderTrackingService from "../Services/OrderTracking";
 import MuiAlert from "@mui/material/Alert";
 
 const stations = {
-  sales: ["Sales Desk", "Reviewed/Approved", "Return to Sales"],
+  sales: [
+    "Sales Desk",
+    "Reviewed/Approved",
+    "Return to Sales",
+    "Closed",
+    "Cancel",
+  ],
   operations: [
     "Initial Check In",
     "Inbound Mill",

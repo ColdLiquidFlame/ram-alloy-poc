@@ -3,23 +3,27 @@ import "ag-grid-community/styles/ag-theme-alpine.css";
 
 import { AgGridReact } from "ag-grid-react";
 import { Link } from "react-router-dom";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 
 import OrderTrackingService from "../Services/OrderTracking";
 import { Box } from "@mui/material";
 import moment from "moment/moment";
+import useAuthenticatedUser from "../Hooks/useAuthenticatedUser";
 
 const columnDefs = [
   {
-    cellRenderer: (params) => {
-      return params.data?.logs?.some(
-        (log) => log !== undefined || log !== null
-      ) ? (
-        <Link to={`order/${params.data.id}/view`}>View Logs</Link>
-      ) : null;
-    },
+    width: "100px",
+    cellRenderer: (params) => (
+      <Link to={`order/${params.data.id}/view`}>View Logs</Link>
+    ),
   },
-  { field: "id", filter: true, sortable: true, headerName: "WO#" },
+  {
+    field: "id",
+    filter: true,
+    sortable: true,
+    headerName: "WO#",
+    resizable: true,
+  },
   {
     field: "createdDate",
     filter: true,
@@ -28,8 +32,17 @@ const columnDefs = [
       params?.data?.createdDate
         ? moment(params?.data?.createdDate).format("MM/DD/YYYY h:mm a")
         : null,
+    flex: 1,
+    resizable: true,
   },
-  { field: "user.nickname", headerName: "User", filter: true, sortable: true },
+  {
+    field: "user.nickname",
+    headerName: "User",
+    filter: true,
+    sortable: true,
+    flex: 1,
+    resizable: true,
+  },
   {
     headerName: "PDF",
     filter: true,
@@ -37,31 +50,38 @@ const columnDefs = [
     cellRenderer: (params) => (
       <Link to={`order/${params.data.id}/pdf`}>View PDF</Link>
     ),
+    flex: 1,
+    resizable: true,
   },
-  { field: "status", filter: true, sortable: true },
+  { field: "status", filter: true, sortable: true, flex: 1, resizable: true },
 ];
+
+const resizeColumns = (gridApi, columnApi) => {
+  const allColumnIds = [];
+  columnApi.getColumns().forEach((column) => {
+    allColumnIds.push(column.getId());
+  });
+  columnApi.autoSizeColumns(allColumnIds, false);
+};
 
 const Dashboard = () => {
   const gridRef = useRef();
-  useEffect(() => {
-    async function fetchOrders() {
-      var orders = await OrderTrackingService.getOrders();
+  useAuthenticatedUser();
 
-      setOrders(orders);
-    }
+  const onFirstDataRendered = useCallback(() => {
+    resizeColumns(gridRef.current.api, gridRef.current.columnApi);
+  }, [gridRef]);
 
-    fetchOrders();
-  }, []);
+  const onGridReady = useCallback(async (params) => {
+    const orders = await OrderTrackingService.getOrders();
+    setOrders(orders);
 
-  const onGridReady = useCallback((params) => {
-    params.api.sizeColumnsToFit();
     window.addEventListener("resize", function () {
+      resizeColumns(params.api, params.columnApi);
       setTimeout(function () {
-        params.api.sizeColumnsToFit();
+        resizeColumns(params.api, params.columnApi);
       });
     });
-
-    gridRef.current.api.sizeColumnsToFit();
   }, []);
 
   const [orders, setOrders] = useState([]);
@@ -78,8 +98,10 @@ const Dashboard = () => {
               ref={gridRef}
               rowData={orders}
               columnDefs={columnDefs}
+              gridOptions={{ colResizeDefault: true }}
               onGridReady={onGridReady}
               domLayout="autoHeight"
+              onFirstDataRendered={onFirstDataRendered}
             />
           </Box>
         </Box>

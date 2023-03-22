@@ -5,7 +5,7 @@ import UserRolesService from "../Services/UserRoles";
 import { useLocation } from "react-router";
 
 const useAuthenticatedUser = () => {
-  const { user, isAuthenticated, loginWithRedirect } = useAuth0();
+  const { user, isAuthenticated, loginWithRedirect, isLoading } = useAuth0();
   const [roles, setRoles] = useState([]);
   const { pathname } = useLocation();
 
@@ -28,7 +28,7 @@ const useAuthenticatedUser = () => {
     }
 
     updateUserRole();
-  }, [user, isAuthenticated, loginWithRedirect, pathname]);
+  }, [user, isAuthenticated, loginWithRedirect, pathname, isLoading]);
 
   return { roles, user, isAuthenticated };
 };
