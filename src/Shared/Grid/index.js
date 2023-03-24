@@ -2,14 +2,17 @@ import { Box } from "@mui/material";
 import { AgGridReact } from "ag-grid-react";
 import { useRef } from "react";
 
-const defaultColumnDefs = {
+const defaultColDefs = {
   minWidth: 100,
   flex: 1,
+  filter: true,
+  sortable: true,
+  suppressMovable: true,
 };
 
 const DataGrid = ({
   onGridReady,
-  defaultColumnDefs: defaultColumnDefsProp,
+  defaultColDefs: defaultColDefsProp,
   ...props
 }) => {
   const gridRef = useRef();
@@ -21,7 +24,7 @@ const DataGrid = ({
         gridOptions={{ colResizeDefault: true }}
         onGridReady={onGridReady}
         domLayout="autoHeight"
-        defaultColumnDefs={{ ...defaultColumnDefs, ...defaultColumnDefsProp }}
+        defaultColDef={{ ...defaultColDefs, ...defaultColDefsProp }}
         {...props}
       />
     </Box>
