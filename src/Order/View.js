@@ -1,13 +1,10 @@
-import "ag-grid-community/styles/ag-grid.css";
-import "ag-grid-community/styles/ag-theme-alpine.css";
-
-import { AgGridReact } from "ag-grid-react";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import OrderTrackingService from "../Services/OrderTracking";
 import moment from "moment";
 import Button from "../Shared/Button";
+import DataGrid from "../Shared/Grid";
 
 const columnDefs = [
   { field: "station", filter: true, sortable: true },
@@ -52,13 +49,7 @@ const OrderView = () => {
       <Button component={Link} to={`/order/${orderId}`}>
         Add Log
       </Button>
-      <div className="ag-theme-alpine">
-        <AgGridReact
-          rowData={logs}
-          columnDefs={columnDefs}
-          domLayout="autoHeight"
-        />
-      </div>
+      <DataGrid rowData={logs} columnDefs={columnDefs} domLayout="autoHeight" />
     </>
   );
 };
