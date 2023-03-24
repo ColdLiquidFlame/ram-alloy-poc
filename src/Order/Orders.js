@@ -1,4 +1,5 @@
 import {
+  Alert,
   Backdrop,
   Box,
   CircularProgress,
@@ -14,32 +15,7 @@ import { Link, useParams } from "react-router-dom";
 import Button from "../Shared/Button";
 import useAuthenticatedUser from "../Hooks/useAuthenticatedUser";
 import OrderTrackingService from "../Services/OrderTracking";
-import MuiAlert from "@mui/material/Alert";
-
-const stations = {
-  sales: [
-    "Sales Desk",
-    "Reviewed/Approved",
-    "Return to Sales",
-    "Closed",
-    "Cancel",
-  ],
-  operations: [
-    "Initial Check In",
-    "Inbound Mill",
-    "Inbound Buyout",
-    "Floor Staging",
-    "Pullers",
-    "Saws",
-    "Receiving",
-    "Processing",
-    "Shipping",
-  ],
-};
-
-const Alert = React.forwardRef(function Alert(props, ref) {
-  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
+import stations from "../Config/stations";
 
 const Orders = () => {
   let { orderId } = useParams();
@@ -87,7 +63,12 @@ const Orders = () => {
         autoHideDuration={6000}
         onClose={() => setSnackBarOpen(false)}
       >
-        <Alert severity="success" sx={{ width: "100%" }}>
+        <Alert
+          severity="success"
+          sx={{ width: "100%" }}
+          elevation={6}
+          variant="filled"
+        >
           Log saved
         </Alert>
       </Snackbar>

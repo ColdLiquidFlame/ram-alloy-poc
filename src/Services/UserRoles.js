@@ -13,15 +13,15 @@ const client = new CosmosClient(options);
 
 const getUserRoles = async () => {
   const querySpec = {
-    query: "SELECT * FROM Orders",
+    query: "SELECT * FROM UserRoles",
   };
 
-  const { resources: orders } = await client
+  const { resources: users } = await client
     .database(CosmosDbConfig.DatabaseId)
     .container(containerId)
     .items.query(querySpec)
     .fetchAll();
-  return orders;
+  return users;
 };
 
 const getRolesByUserId = async (userId) => {
@@ -34,7 +34,7 @@ const getRolesByUserId = async (userId) => {
   return response.item;
 };
 
-const updateUserRoles = async (userRoles) => {
+const updateUser = async (userRoles) => {
   const { id, email, nickname } = userRoles;
 
   const querySpec = {
@@ -83,10 +83,19 @@ const updateUserRoles = async (userRoles) => {
   return existingUserRole;
 };
 
-const service = {
-  getUserRoles,
-  getRolesByUserId,
-  updateUserRoles,
+const updateRoles = async ({ id, roles }) => {
+  await client
+    .database(CosmosDbConfig.DatabaseId)
+    .container(containerId)
+    .item(id, id)
+    .patch([{ op: "add", path: "/roles", value: roles }]);
 };
 
-export default service;
+const UserRoleService = {
+  getUserRoles,
+  getRolesByUserId,
+  updateUser,
+  updateRoles,
+};
+
+export default UserRoleService;

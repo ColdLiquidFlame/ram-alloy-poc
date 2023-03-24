@@ -1,19 +1,22 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import {
   Avatar,
+  Divider,
   IconButton,
+  ListItemIcon,
   Menu,
   MenuItem,
   Tooltip,
   Typography,
 } from "@mui/material";
-import { useAuth0 } from "@auth0/auth0-react";
+import LogoutIcon from "@mui/icons-material/Logout";
 import { Box } from "@mui/system";
-
-const settings = ["Logout"];
+import useAuthenticatedUser from "../Hooks/useAuthenticatedUser";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
+import { Link } from "react-router-dom";
 
 const Logout = () => {
-  var { logout, user } = useAuth0();
+  const { roles, user, logout, isAdmin } = useAuthenticatedUser();
 
   const [anchorElUser, setAnchorElUser] = useState(null);
 
@@ -61,11 +64,26 @@ const Logout = () => {
           open={Boolean(anchorElUser)}
           onClose={handleCloseUserMenu}
         >
-          {settings.map((setting) => (
-            <MenuItem key={setting} onClick={handleLogout}>
-              <Typography textAlign="center">{setting}</Typography>
-            </MenuItem>
-          ))}
+          {isAdmin && [
+            <MenuItem
+              key={0}
+              component={Link}
+              to={"/admin"}
+              onClick={handleCloseUserMenu}
+            >
+              <ListItemIcon>
+                <ManageAccountsIcon fontSize="small" />
+              </ListItemIcon>
+              <Typography textAlign="center">Admin</Typography>
+            </MenuItem>,
+            <Divider key={1} />,
+          ]}
+          <MenuItem onClick={handleLogout}>
+            <ListItemIcon>
+              <LogoutIcon fontSize="small" />
+            </ListItemIcon>
+            <Typography textAlign="center">Logout</Typography>
+          </MenuItem>
         </Menu>
       </Box>
     </>
