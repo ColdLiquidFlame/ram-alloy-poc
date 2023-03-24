@@ -73,7 +73,7 @@ const Admin = () => {
     console.log("onCellValueChanged", params);
     const { data, node } = params;
 
-    const { id, roles: currentRoles } = data;
+    const { id } = data;
 
     var selectedRoles = roles.reduce((changed, currentRole) => {
       // role was not changed

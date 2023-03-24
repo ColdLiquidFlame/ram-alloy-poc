@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import {
   Avatar,
   Divider,
@@ -16,7 +16,7 @@ import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import { Link } from "react-router-dom";
 
 const Logout = () => {
-  const { roles, user, logout, isAdmin } = useAuthenticatedUser();
+  const { user, logout, isAdmin } = useAuthenticatedUser();
 
   const [anchorElUser, setAnchorElUser] = useState(null);
 
