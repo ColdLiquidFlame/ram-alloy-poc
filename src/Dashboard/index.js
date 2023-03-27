@@ -43,7 +43,7 @@ const Dashboard = () => {
     if (showPrintDialog && orderId !== undefined) {
       handlePrint();
     }
-  }, [orderId, handlePrint]);
+  }, [orderId, handlePrint, showPrintDialog]);
 
   const { isAdmin } = useAuthenticatedUser();
 
