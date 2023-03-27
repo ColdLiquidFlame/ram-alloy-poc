@@ -32,17 +32,17 @@ const useAuthenticatedUser = () => {
     }
 
     updateUserRole();
-  }, [
+  }, [user, isAuthenticated, loginWithRedirect, pathname]);
+
+  return {
+    roles,
     user,
     isAuthenticated,
     loginWithRedirect,
-    pathname,
     isLoading,
     logout,
     isAdmin,
-  ]);
-
-  return { roles, user, isAuthenticated };
+  };
 };
 
 export default useAuthenticatedUser;
