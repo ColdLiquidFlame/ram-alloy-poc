@@ -1,5 +1,5 @@
 import { forwardRef, useImperativeHandle } from "react";
-import Button from "../Shared/Button";
+import Button from "../Shared/TextButton";
 
 const ButtonEditor = forwardRef(({ api }, ref) => {
   useImperativeHandle(ref, () => {
@@ -12,18 +12,8 @@ const ButtonEditor = forwardRef(({ api }, ref) => {
 
   return (
     <>
-      <Button
-        sx={{ minWidth: "unset", height: "2.5em" }}
-        onClick={() => api.stopEditing()}
-      >
-        Save
-      </Button>
-      <Button
-        sx={{ minWidth: "unset", height: "2.5em" }}
-        onClick={() => api.stopEditing(true)}
-      >
-        Cancel
-      </Button>
+      <Button onClick={() => api.stopEditing()}>Save</Button>
+      <Button onClick={() => api.stopEditing(true)}>Cancel</Button>
     </>
   );
 });

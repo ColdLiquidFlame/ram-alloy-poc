@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import React, { useCallback, useState } from "react";
 import UserRoleService from "../Services/UserRoles";
-import Button from "../Shared/Button";
+import Button from "../Shared/TextButton";
 import DataGrid from "../Shared/Grid";
 import CheckboxEditor from "../Shared/Grid/Editors/CheckboxEditor";
 import ButtonEditor from "./ButtonEditor";
@@ -19,8 +19,10 @@ import useAuthenticatedUser from "../Hooks/useAuthenticatedUser";
 const columnDefs = [
   {
     valueSetter: () => null,
-    width: 200,
-    resizable: true,
+    minWidth: 80,
+    width: 250,
+    flex: 0,
+    filter: false,
     editable: true,
     cellRenderer: (params) => {
       const {
@@ -31,7 +33,6 @@ const columnDefs = [
 
       return (
         <Button
-          sx={{ minWidth: "unset", height: "2.5em" }}
           onClick={() => api.startEditingCell({ rowIndex, colKey: colId })}
         >
           Edit
@@ -109,6 +110,7 @@ const Admin = () => {
       )}
       {isAdmin && [
         <Snackbar
+          key="0"
           open={snackBarOpen}
           autoHideDuration={6000}
           onClose={() => setSnackBarOpen(false)}
@@ -123,12 +125,13 @@ const Admin = () => {
           </Alert>
         </Snackbar>,
         <Backdrop
+          key="1"
           sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
           open={open}
         >
           <CircularProgress color="inherit" />
         </Backdrop>,
-        <Box>
+        <Box key="2">
           <Typography variant={"h3"}>Manage Users</Typography>
           <Box>
             <DataGrid
