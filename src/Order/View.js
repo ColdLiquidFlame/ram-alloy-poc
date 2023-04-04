@@ -54,7 +54,6 @@ const OrderView = () => {
       <Button
         variant="text"
         onClick={() => {
-          console.log("Log", log);
           setShowConfirmationDialog(true);
           setLog(log);
         }}
@@ -92,7 +91,6 @@ const OrderView = () => {
 
   useEffect(() => {
     if (isAdmin && gridReady) {
-      console.log("isAdmin and grid is ready");
       const { columnApi } = gridRef.current;
 
       columnApi.setColumnVisible("delete", true);

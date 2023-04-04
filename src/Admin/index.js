@@ -15,6 +15,7 @@ import CheckboxEditor from "../Shared/Grid/Editors/CheckboxEditor";
 import ButtonEditor from "./ButtonEditor";
 import roles from "../Config/roles";
 import useAuthenticatedUser from "../Hooks/useAuthenticatedUser";
+import Unauthorized from "../Unauthorized";
 
 const columnDefs = [
   {
@@ -60,7 +61,7 @@ const columnDefs = [
 ];
 
 const Admin = () => {
-  const { isAdmin } = useAuthenticatedUser();
+  const { isAdmin, roles } = useAuthenticatedUser();
   const [users, setUsers] = useState([]);
   const [open, setOpen] = useState(false);
   const [snackBarOpen, setSnackBarOpen] = useState(false);
@@ -71,7 +72,6 @@ const Admin = () => {
   }, []);
 
   const onCellValueChanged = async (params) => {
-    console.log("onCellValueChanged", params);
     const { data, node } = params;
 
     const { id } = data;
@@ -103,11 +103,7 @@ const Admin = () => {
 
   return (
     <>
-      {!isAdmin && (
-        <Typography variant="h3" sx={{ color: "red" }}>
-          Unauthorized
-        </Typography>
-      )}
+      {!isAdmin && <Unauthorized />}
       {isAdmin && [
         <Snackbar
           key="0"

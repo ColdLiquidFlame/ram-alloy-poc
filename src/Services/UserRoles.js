@@ -56,7 +56,7 @@ const updateUser = async (userRoles) => {
   let [existingUserRole] = existingUserRoles;
 
   if (existingUserRole === undefined) {
-    existingUserRole = { id, email, roles: ["operations"] };
+    existingUserRole = { id, email, roles: [] };
     await client
       .database(CosmosDbConfig.DatabaseId)
       .container(containerId)
