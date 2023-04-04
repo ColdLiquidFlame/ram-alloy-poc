@@ -2,8 +2,13 @@ import { Auth0Provider } from "@auth0/auth0-react";
 
 import React from "react";
 import { useNavigate } from "react-router";
+import Auth0Config from "./Config/auth0";
+
+console.log(Auth0Config);
 
 const AuthenticationProvider = ({ children }) => {
+  console.log(Auth0Config);
+
   const navigate = useNavigate();
   const handleCallback = (appState) => {
     navigate(appState?.returnTo || window.location.pathname, { replace: true });
@@ -11,8 +16,8 @@ const AuthenticationProvider = ({ children }) => {
 
   return (
     <Auth0Provider
-      domain="ramalloys-beta.us.auth0.com"
-      clientId="V1BRraVfC9ShCHcEIriT1XhbnJDDRwQS"
+      domain={Auth0Config.domain}
+      clientId={Auth0Config.clientId}
       authorizationParams={{
         redirect_uri: window.location.origin,
       }}
