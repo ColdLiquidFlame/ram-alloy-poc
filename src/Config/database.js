@@ -1,7 +1,7 @@
 const CosmosDbConfig = {
-    Endpoint: 'https://ramalloydb.documents.azure.com:443/',
-    Key: 'tOA22SNDpaKFW3EevmLMXBc25uUJu9jjvtbzttdrbzugGCuhW4zCnvt0CF2m1uYfmf09FVtYpaFSACDbcKvo2A==',
-    DatabaseId: "OrderTracking"
+  Endpoint: process.env.REACT_APP_DB_ENDPOINT,
+  Key: process.env.REACT_APP_DB_KEY,
+  DatabaseId: process.env.REACT_APP_DB_ID,
 };
 
 export default CosmosDbConfig;
