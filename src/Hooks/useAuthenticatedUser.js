@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
 import UserRolesService from "../Services/UserRoles";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 
 const useAuthenticatedUser = () => {
   const { user, isAuthenticated, loginWithRedirect, isLoading, logout } =
@@ -12,6 +12,7 @@ const useAuthenticatedUser = () => {
   const isAdmin = useMemo(() => roles.includes("admin"), [roles]);
 
   const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function updateUserRole() {
@@ -21,7 +22,12 @@ const useAuthenticatedUser = () => {
           email: user?.email,
           nickname: user?.nickname,
         });
+
         setRoles(profile.roles);
+
+        if (profile.roles.length === 0) {
+          navigate("/unauthorized");
+        }
       } else {
         await loginWithRedirect({
           appState: {
@@ -32,7 +38,7 @@ const useAuthenticatedUser = () => {
     }
 
     updateUserRole();
-  }, [user, isAuthenticated, loginWithRedirect, pathname]);
+  }, [user, isAuthenticated, loginWithRedirect, pathname, navigate]);
 
   return {
     roles,

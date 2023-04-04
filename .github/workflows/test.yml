@@ -1,0 +1,11 @@
+name: Test
+
+on: 
+  workflow_dispatch:
+
+jobs:
+  print-env:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Env Variables
+        run: echo "${{ vars.AUTO0_TEST_DOMAIN }}"

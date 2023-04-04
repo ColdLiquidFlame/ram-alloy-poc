@@ -164,7 +164,6 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (isAdmin && gridReady) {
-      console.log("isAdmin and grid is ready");
       const { columnApi } = gridRef.current;
 
       columnApi.setColumnVisible("delete", true);
@@ -189,7 +188,6 @@ const Dashboard = () => {
           rowData={orders}
           columnDefs={columnDefs}
           onGridReady={onGridReady}
-          onFilterChanged={(params) => console.log(params.api.getFilterModel())}
           defaultColDefs={{
             resizable: true,
             suppressMovable: false,
