@@ -8,4 +8,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print Env Variables
-        run: echo "$AUTO0_TEST_DOMAIN"
+        run: echo "{{ vars.AUTO0_TEST_DOMAIN }}"
