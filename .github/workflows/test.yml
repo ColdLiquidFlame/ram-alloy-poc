@@ -6,6 +6,6 @@ on:
 jobs:
   print-env:
     runs-on: ubuntu-latest
-      steps:
+    steps:
       - name: Print Env Variables
         run: echo "$AUTO0_TEST_DOMAIN"
