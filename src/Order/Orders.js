@@ -140,7 +140,6 @@ const Orders = () => {
               onChange={handleStatusChange}
             >
               <MenuItem value="Started">Started</MenuItem>
-              <MenuItem value="Processing">Processing</MenuItem>
               <MenuItem value="Finished">Finished</MenuItem>
             </Select>
           </FormControl>
