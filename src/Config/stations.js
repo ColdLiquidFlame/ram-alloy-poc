@@ -1,9 +1,8 @@
 const stations = {
   sales: [
-    "Sales Desk",
-    "Reviewed/Approved",
+    "WO Initiation",
+    "WO Reviewed/Approved",
     "Return to Sales",
-    "Closed",
     "Cancel",
   ],
   operations: [
@@ -11,11 +10,13 @@ const stations = {
     "Inbound Mill",
     "Inbound Buyout",
     "Floor Staging",
-    "Pullers",
-    "Saws",
     "Receiving",
     "Processing",
+    "Pulling",
+    "Saws",
     "Shipping",
+    "Logistics",
+    "Closed",
   ],
 };
 
