@@ -17,7 +17,7 @@ export default React.forwardRef(({ orderId, ...props }, ref) => {
       ref={ref}
       {...props}
     >
-      <Typography variant="h3">{`Work Order ${orderId ?? id}`}</Typography>
+      <Typography variant="p1">{` ${orderId ?? id}`}</Typography>
       <QRCode
         size={200}
         value={`${window.location.origin}/order/${orderId ?? id}`}
